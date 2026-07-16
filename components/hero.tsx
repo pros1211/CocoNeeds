@@ -8,7 +8,7 @@ const Hero = () => {
         className="relative min-h-[60vh] rounded-2xl flex mb-10 overflow-hidden bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: "url('/coconutPlant.png')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-transparent z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green via-green/80 to-transparent z-0"></div>
         <div className="relative z-10 p-8 flex flex-col gap-4 max-w-[800px]">
           <span className="p-3 rounded-full max-w-fit text-[#70E000] bg-[#70E000]/30">
             empowering a sustainable coconut industry
