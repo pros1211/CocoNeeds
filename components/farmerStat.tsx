@@ -10,12 +10,12 @@ const cardData = [
   {
     text: "Coconut Harvested",
     stat: "7.8 Tn",
-    picture: "/coconut.png",
+    picture: "/coconut.jpg",
   },
   {
     text: "Total Profit",
     stat: "300 Mil",
-    picture: "/money.png",
+    picture: "/money.jpg",
   },
 ];
 const FarmerStat = () => {
