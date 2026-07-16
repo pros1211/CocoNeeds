@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -10,6 +10,7 @@ import {
   icons,
 } from "lucide-react";
 import { VscSparkleCompact } from "react-icons/vsc";
+import { useState } from "react";
 const navigation = [
   { name: "home", href: "/farmer-portal", icon: House },
   { name: "assistant", href: "/assist", icon: VscSparkleCompact },

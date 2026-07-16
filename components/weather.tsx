@@ -98,7 +98,7 @@ const Weather = () => {
     fetchUserLocation();
   }, [fetchUserLocation]);
   return (
-    <div className="flex flex-col p-6 shadow-sm bg-white gap-6 w-full max-w-sm">
+    <div className="flex flex-col p-6 shadow-sm bg-white gap-6 w-full max-w-sm rounded-xl">
       <div className="flex items-center justify-between">
         <h3 className="font-semibold text-gray-800 text-lg capitalize">
           {loading ? "Locating..." : locationName}
@@ -111,7 +111,6 @@ const Weather = () => {
           {loading ? "Locating..." : "Update GPS"}
         </button>
       </div>
-      <LocalDate />
       {error && (
         <div className="flex items-start gap-2 bg-red-50 text-red-600 p-3 rounded-xl text-sm">
           <AlertCircle className="w-5 h-5 shrink-0" />
@@ -126,23 +125,22 @@ const Weather = () => {
       )}
       {weatherStat && !loading && !error && (
         <div className="flex flex-col gap-6">
-          <div className="flex items-center">
+          <div className="flex items-center gap-4">
+            {React.createElement(
+              getWeatherDetails(weatherStat.weather_code).icon,
+              {
+                className: `w-18 h-18 ${getWeatherDetails(weatherStat.weather_code).color}`,
+              },
+            )}
             <div>
-              <div className="text-5xl font-bold text-gray-900 tracking-tighter">
+              <div className="text-4xl font-bold text-gray-900 tracking-tighter">
                 {Math.round(weatherStat.temperature_2m)}°
-                <span className="text-3xl text-gray-400">C</span>
+                <span className="text-2xl text-gray-400">C</span>
               </div>
               <p className="text-gray-500 font-medium mt-1">
                 {getWeatherDetails(weatherStat.weather_code).text}
               </p>
             </div>
-
-            {React.createElement(
-              getWeatherDetails(weatherStat.weather_code).icon,
-              {
-                className: `w-16 h-16 ${getWeatherDetails(weatherStat.weather_code).color}`,
-              },
-            )}
           </div>
 
           {/* Secondary Stats (Wind & Humidity) */}
