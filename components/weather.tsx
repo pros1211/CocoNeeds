@@ -100,7 +100,9 @@ const Weather = () => {
   return (
     <div className="flex flex-col p-6 shadow-sm bg-white gap-6 w-full max-w-sm">
       <div className="flex items-center justify-between">
-        <h3 className="font-semibold text-gray-800 text-lg">Local Weather</h3>
+        <h3 className="font-semibold text-gray-800 text-lg capitalize">
+          {loading ? "Locating..." : locationName}
+        </h3>
         <button
           onClick={fetchUserLocation}
           className="flex items-center gap-1.5 text-xs font-medium bg-[#2d6a4f]/10 text-[#2d6a4f] px-3 py-1.5 rounded-full hover:bg-[#2d6a4f]/20 transition-colors"
