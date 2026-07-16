@@ -42,6 +42,7 @@ const Weather = () => {
   } | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [locationName, setLocationName] = useState<string>("Local Weather");
   const fetchUserLocation = useCallback(() => {
     setLoading(true);
     setError(null);
@@ -62,6 +63,18 @@ const Weather = () => {
           if (!response.ok) throw new Error("failed to fetch weather data");
           const data = await response.json();
           setWeather(data.current);
+          const geoResponse = await fetch(
+            `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
+          );
+          if (geoResponse.ok) {
+            const geoData = await geoResponse.json();
+            const exactLocation =
+              geoData.city || geoData.locality || geoData.principalSubdivision;
+
+            if (exactLocation) {
+              setLocationName(exactLocation);
+            }
+          }
         } catch (err) {
           setError("Failed to load weather data. Please try again.");
         } finally {
