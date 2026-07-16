@@ -111,7 +111,7 @@ const Weather = () => {
       )}
       {weatherStat && !loading && !error && (
         <div className="flex flex-col gap-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center">
             <div>
               <div className="text-5xl font-bold text-gray-900 tracking-tighter">
                 {Math.round(weatherStat.temperature_2m)}°
@@ -122,7 +122,6 @@ const Weather = () => {
               </p>
             </div>
 
-            {/* Dynamic Icon */}
             {React.createElement(
               getWeatherDetails(weatherStat.weather_code).icon,
               {
