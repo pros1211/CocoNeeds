@@ -12,6 +12,11 @@
   --color-tertiary: #52b788;
   --color-gradient: #75daa8;
   --color-logo: #468366;
+  --color-copra: #dda15e;
+  --color-shell: #bc6c25;
+  --color-milk: #fefae0;
+  --color-oil: #606c38;
+  --color-fiber: #283618;
 }
 
 @theme inline {
@@ -90,6 +95,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --color-copra: #dda15e;
+  --color-shell: #bc6c25;
+  --color-milk: #fefae0;
+  --color-oil: #606c38;
+  --color-fiber: #283618;
 }
 
 .dark {

@@ -17,28 +17,38 @@ const cardData = [
     stat: "300 Mil",
     picture: "/money.jpg",
   },
+  // {
+  //   text: "Active Shipment",
+  //   stat: "3 Deliveries",
+  //   picture: "/money.jpg",
+  // },
+  // {
+  //   text: "Coconut Harvested (last 3 months)",
+  //   stat: "1 Tn",
+  //   picture: "/coconut.jpg",
+  // },
 ];
 const FarmerStat = () => {
   return (
-    <div className="flex items-center justify-evenly px-3 py-3">
+    <div className="grid grid-cols-2 xl:grid-cols-4 gap-2 w-full">
       {cardData.map((data, index) => (
         <div
           key={index}
-          className="bg-[#F9DFB1] max-w-[250px] flex items-center gap-2 px-4 py-2 rounded-2xl shadow-sm border border-gray-50"
+          className="bg-[#F9DFB1] w-full h-full flex items-center justify-evenly px-2 py-3 rounded-2xl shadow-sm border border-gray-50"
         >
-          <div className="w-20 h-20 shrink-0 flex items-center justify-center">
+          <div className="w-16 h-16 shrink-0 flex items-center justify-center">
             <Image
               src={data.picture}
               width={80}
               height={80}
               alt={`${data.text} icon`}
-              className="rounded-full p-2"
+              className="rounded-full"
               style={{ objectFit: "contain" }}
             />
           </div>
-          <div className="flex flex-col items-center text-center gap-2">
-            <span className="font-medium text-md">{data.text}</span>
-            <span className="font-semibold text-lg">{data.stat}</span>
+          <div className="flex flex-col items-center text-center justify-center">
+            <span className="font-medium text-sm">{data.text}</span>
+            <span className="font-semibold text-md">{data.stat}</span>
           </div>
         </div>
       ))}

@@ -10,18 +10,25 @@ import {
   icons,
 } from "lucide-react";
 import { VscSparkleCompact } from "react-icons/vsc";
-import { useState } from "react";
+import Image from "next/image";
 const navigation = [
   { name: "home", href: "/farmer-portal", icon: House },
   { name: "assistant", href: "/assist", icon: VscSparkleCompact },
-  { name: "stat", href: "/stat", icon: ChartNoAxesCombined },
+  { name: "stat", href: "/statistics", icon: ChartNoAxesCombined },
   { name: "logistics", href: "/logis", icon: Truck },
   { name: "recycle", href: "/recycle", icon: Recycle },
 ];
 const FarmerNav = () => {
   const pathname = usePathname();
   return (
-    <nav className="w-24 min-h-screen bg-[#F8F9FA] border-r border-gray-200 flex flex-col items-center py-8 gap-4 shrink-0">
+    <nav className="w-24 min-h-screen bg-[#F8F9FA] border-r border-gray-200 flex flex-col items-center py-2 px-3 gap-4 shrink-0">
+      <Image
+        src="/cocoLogo.jpg"
+        width={70}
+        height={70}
+        alt="coconeeds Logo"
+        className="rounded-full"
+      />
       {navigation.map((nav) => {
         const isActive = pathname === nav.href;
         const Icon = nav.icon;
