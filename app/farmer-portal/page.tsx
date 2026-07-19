@@ -1,5 +1,4 @@
 import React from "react";
-import FarmerNav from "@/components/farmer-portal/farmerNav";
 import Weather from "@/components/farmer-portal/homeDash/weather";
 import CopraForecast from "@/components/farmer-portal/homeDash/copraForecast";
 import Greeting from "@/components/farmer-portal/greeting";

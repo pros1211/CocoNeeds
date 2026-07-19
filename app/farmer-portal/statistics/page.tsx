@@ -9,7 +9,6 @@ import SpendingBreak from "@/components/farmer-portal/statistics/spendingBreak";
 import SalesRecent from "@/components/farmer-portal/statistics/salesRecent";
 import MarketCommodity from "@/components/farmer-portal/statistics/marketCommodity";
 import FormKeuangan from "@/components/farmer-portal/statistics/formKeuangan";
-import { PlusCircle } from "lucide-react";
 const Statistics = () => {
   return (
     <div className="grid grid-cols-1 xl:grid-cols-6 p-5 gap-4">

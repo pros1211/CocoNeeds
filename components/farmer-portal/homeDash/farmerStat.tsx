@@ -18,7 +18,7 @@ const cardData = [
   {
     text: "Coconut Harvested",
     stat: "7.8 Tn",
-    picture: "/coconut.jpg",
+    picture: "/coconut.png",
     link: "/farmer-portal/AI-insight",
   },
   {
