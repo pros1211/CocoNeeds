@@ -135,7 +135,7 @@ const CompGauge = () => {
     return <Sector {...props} outerRadius={outerRadius} />;
   };
   return (
-    <div className="flex-1 w-full flex flex-col bg-[#F8F9FA] p-6 rounded-2xl w-full ">
+    <div className="w-full flex flex-col bg-[#F8F9FA] p-6 rounded-2xl min-h-[300px]">
       <div className="flex justify-end mb-4 pr-4">
         <Select
           value={activeMonth}
@@ -153,7 +153,10 @@ const CompGauge = () => {
         </Select>
       </div>
 
-      <ChartContainer config={chartConfig} className="w-full min-h-[300px]">
+      <ChartContainer
+        config={chartConfig}
+        className="w-full flex-1 min-h-[250px]"
+      >
         <PieChart>
           <ChartTooltip
             cursor={false}
@@ -163,7 +166,7 @@ const CompGauge = () => {
             content={
               <ChartLegendContent
                 nameKey="component"
-                className="flex-col items-start pr-20 gap-3 text-md font-medium [&_[style*='background-color']]:w-8 [&_[style*='background-color']]:h-8 [&_[style*='background-color']]:rounded-sm"
+                className="flex-col items-start p-3 gap-3 text-sm font-medium [&_[style*='background-color']]:w-5 [&_[style*='background-color']]:h-5 [&_[style*='background-color']]:rounded-sm"
               />
             }
             layout="vertical"
@@ -173,10 +176,10 @@ const CompGauge = () => {
           <Pie
             data={activeData}
             dataKey="number"
-            cx="50%"
+            cx="40%"
             cy="50%"
-            innerRadius={70}
-            outerRadius={140}
+            innerRadius={75}
+            outerRadius={115}
             strokeWidth={3}
             stroke="#ffffff"
             nameKey="component"
@@ -189,22 +192,19 @@ const CompGauge = () => {
               content={({ viewBox }) => {
                 if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                   const imageSize = 120;
-                  const nudgeX = -100;
-                  const nudgeY = 0;
                   return (
                     <g>
                       <circle
-                        cx={(viewBox.cx || 0) + nudgeX}
-                        cy={(viewBox.cy || 0) + nudgeY}
+                        cx={viewBox.cx - 100}
+                        cy={viewBox.cy}
                         r={imageSize / 2}
                         fill="#f3f4f6"
                       />
-
                       <image
                         href="/coconut.png"
                         className="rounded-full"
-                        x={(viewBox.cx || 0) - imageSize / 2 + nudgeX}
-                        y={(viewBox.cy || 0) - imageSize / 2 + nudgeY}
+                        x={viewBox.cx - imageSize / 2 - 100}
+                        y={viewBox.cy - imageSize / 2}
                         width={imageSize}
                         height={imageSize}
                       />

@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import "../app/globals.css";
+import "../../app/globals.css";
 import { ArrowDown } from "lucide-react";
 const Faq = () => {
   const [open, setOpen] = useState<number | null>(0);

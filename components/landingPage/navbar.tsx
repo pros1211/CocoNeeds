@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import "../app/globals.css";
+import "../../app/globals.css";
 import { CircleUserRound, Bell } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";

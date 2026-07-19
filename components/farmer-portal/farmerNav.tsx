@@ -13,8 +13,16 @@ import { VscSparkleCompact } from "react-icons/vsc";
 import Image from "next/image";
 const navigation = [
   { name: "home", href: "/farmer-portal", icon: House },
-  { name: "assistant", href: "/assist", icon: VscSparkleCompact },
-  { name: "stat", href: "/statistics", icon: ChartNoAxesCombined },
+  {
+    name: "assistant",
+    href: "/farmer-portal/AI-insight",
+    icon: VscSparkleCompact,
+  },
+  {
+    name: "stat",
+    href: "/farmer-portal/statistics",
+    icon: ChartNoAxesCombined,
+  },
   { name: "logistics", href: "/logis", icon: Truck },
   { name: "recycle", href: "/recycle", icon: Recycle },
 ];

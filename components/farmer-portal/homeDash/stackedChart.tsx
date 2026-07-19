@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import CompGauge from "./compGauge";
-import ProfitChart from "./profitChart";
+import CompGauge from "../../compGauge";
+import ProfitChart from "../../profitChart";
 export default function StackedChart() {
   const [activeTab, setActiveTab] = useState<"Profit" | "Composition">(
     "Profit",
@@ -19,7 +19,7 @@ export default function StackedChart() {
             onClick={() => setActiveTab("Profit")}
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === "Profit"
-                ? "bg-[#1b4332] text-white shadow-sm"
+                ? "bg-[#A38E65] text-white shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
@@ -29,7 +29,7 @@ export default function StackedChart() {
             onClick={() => setActiveTab("Composition")}
             className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
               activeTab === "Composition"
-                ? "bg-[#1b4332] text-white shadow-sm"
+                ? "bg-[#A38E65] text-white shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >

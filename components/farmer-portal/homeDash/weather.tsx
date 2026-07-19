@@ -11,7 +11,6 @@ import {
   AlertCircle,
   Droplets,
 } from "lucide-react";
-import LocalDate from "./localDate";
 interface WeatherData {
   temperature_2m: number;
   weather_code: number;

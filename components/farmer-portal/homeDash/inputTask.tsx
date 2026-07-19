@@ -10,10 +10,10 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from "./ui/dialog";
-import { Field, FieldGroup } from "./ui/field";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
+} from "../../ui/dialog";
+import { Field, FieldGroup } from "../../ui/field";
+import { Label } from "../../ui/label";
+import { Input } from "../../ui/input";
 import { addTask } from "@/app/action";
 const InputTask = () => {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,5 +1,5 @@
 import React from "react";
-import FarmerNav from "@/components/farmerNav";
+import FarmerNav from "@/components/farmer-portal/farmerNav";
 import Time from "@/components/time";
 import { Search, BadgeQuestionMark, Clock, Badge, Bell } from "lucide-react";
 export default function FarmerPortalLayout({
