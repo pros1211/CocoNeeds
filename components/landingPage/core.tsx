@@ -4,35 +4,35 @@ import React from "react";
 function Core() {
   const advantageDesc = [
     {
-      stat: "96%",
-      title: "Increase in crop yields",
+      stat: "AI Forecasting",
+      title: "Prediksi Panen yang Lebih Akurat",
       description:
-        "Boost your crop yields with personalized AI-driven forecasts to increase your profits.",
+        "Teknologi AI membantu memperkirakan waktu dan kualitas hasil panen berdasarkan data lahan dan kondisi produksi. Membantu petani  mengoptimalkan kebutuhan pasokan dengan lebih tepat sehingga risiko kekurangan atau kelebihan stok dapat diminimalkan.",
     },
     {
-      stat: "2X",
-      title: "Faster delivery of goods",
+      stat: "Smart Logistic",
+      title: "Traceability Produk yang Terpercaya",
       description:
-        "Product delivery is faster thanks to our partners' numerous distribution locations, cutting down on delivery times and unnecessary costs.",
+        "transparansi dan autentikasi produk yang dapat ditelusuri mulai dari petani dan asal kebun, proses distribusi, hingga diterima oleh perusahaan.",
     },
     {
-      stat: "80%",
-      title: "Time-efficient operations",
+      stat: "B2B",
+      title: "Menghubungkan Petani dan Industri",
       description:
-        "Many partners from the corporate and agricultural sectors are ready to supply and purchase these products through our marketplace.",
+        "CocoNeeds mempertemukan petani, koperasi, dan perusahaan dalam satu platform untuk efisiensi proses pencarian pemasok, negosiasi, hingga transaksi menjadi lebih mudah.",
     },
     {
-      stat: "24/7",
-      title: "Monitoring from anywhere, anytime",
+      stat: "Eco Points",
+      title: "Mendorong Circular Economy",
       description:
-        "Access and monitor statistics from anywhere, at anytime without an internet connection, thanks to our PWA platform.",
+        "Limbah kelapa tidak lagi menjadi sisa produksi. CocoNeeds membantu pemanfaatan limbah, dengan eco-points limbah kelapa dapat ditukar menjadi nilai ekonomi yang dapat membantu produksi.",
     },
   ];
   return (
     <>
       <div className="flex flex-col items-center gap-12 py-12 px-4 w-full">
         <h2 className="capitalize font-semibold gap-6 text-4xl max-w-[800px] text-center">
-          increasing profits through our smart supply chain process
+          Membangun Agroindustri yang Lebih Efisien dan Berkelanjutan
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl w-full">
@@ -41,10 +41,10 @@ function Core() {
               key={index}
               className="group flex flex-col rounded-2xl p-8 border border-gray-200 justify-center items-center cursor-pointer shadow-sm hover:shadow-lg hover:border-[#3BA275]/50 transition-all duration-500"
             >
-              <span className="text-6xl font-bold text-[#3BA275]/80 mb-3 group-hover:-translate-y-1 transition-transform duration-500">
+              <span className="text-3xl font-bold text-[#3BA275]/80 mb-3 group-hover:-translate-y-1 transition-transform duration-500">
                 {card.stat}
               </span>
-              <p className="font-regular text-2xl text-center group-hover:-translate-y-1 transition-transform duration-500">
+              <p className="font-regular text-xl text-center group-hover:-translate-y-1 transition-transform duration-500">
                 {card.title}
               </p>
               <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out w-full">

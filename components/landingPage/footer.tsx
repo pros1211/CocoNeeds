@@ -4,7 +4,7 @@ import { FaInstagram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
     <>
-      <div className="flex items-center p-8 text-white text-justify justify-between w-full bg-[#2C694E]">
+      <div className="flex flex-col lg:flex-row items-start p-8 text-white text-justify justify-between w-full bg-[#2C694E] gap-10">
         <div className="flex flex-col gap-4 max-w-[30vw]">
           <h2 className="text-2xl font-bold tracking-widers">CocoNeeds</h2>
           <p className="font-semibold text-xl tracking-wide">

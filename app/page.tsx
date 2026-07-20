@@ -9,7 +9,7 @@ import Footer from "@/components/landingPage/footer";
 export default function Home() {
   return (
     <>
-      <main className=" w-full flex flex-col gap-10  ">
+      <main className=" w-full flex flex-col gap-10 overflow-x-hidden">
         <Hero />
         <Core />
         <Features />

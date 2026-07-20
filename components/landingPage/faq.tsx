@@ -26,7 +26,7 @@ const Faq = () => {
   ];
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10 px-4">
         <div className="text-center flex gap-4 flex-col items-center ">
           <h2 className="text-3xl text-[#2C694E] font-bold capitalize">
             frequently asked questions
