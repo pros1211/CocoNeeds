@@ -2,6 +2,7 @@
 import { cache } from "react";
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import { SupabaseClient } from "@supabase/supabase-js";
 export async function addTask(formData: FormData) {
   const supabase = await createClient();
   const title = formData.get("title") as string;
@@ -73,7 +74,6 @@ export const getFinancialData = cache(async () => {
   let pemasukanBulanIni = 0;
   let pemasukanBulanLalu = 0;
 
-  // Placeholder for all 12 months for the chart
   const monthlyIncomeMap: Record<number, number> = {
     0: 0,
     1: 0,
@@ -195,3 +195,37 @@ export const getFinancialData = cache(async () => {
     selisihPengeluaran,
   };
 });
+export type dailyInput = {
+  tanggal: Date;
+  is_watered: boolean;
+  fruit_drop: number;
+  harvest_count: number;
+  pest_type: string;
+  weather: string;
+};
+export async function addDailyLog(inputData: dailyInput) {
+  try {
+    const supabase = await createClient();
+
+    const { error } = await supabase.from("log_harian").insert([
+      {
+        tanggal: inputData.tanggal.toISOString(),
+        fruit_drop: inputData.fruit_drop,
+        pest_type: inputData.pest_type,
+        harvest_count: inputData.harvest_count,
+        weather: inputData.weather,
+      },
+    ]);
+
+    if (error) {
+      console.error("Supabase error:", error.message);
+      return { success: false, error: error.message };
+    }
+
+    revalidatePath("/farmer-portal");
+    return { success: true };
+  } catch (err) {
+    console.error("Server Action Error:", err);
+    return { success: false, error: "Internal Server Error" };
+  }
+}

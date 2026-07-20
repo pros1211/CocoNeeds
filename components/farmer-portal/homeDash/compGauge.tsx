@@ -2,10 +2,7 @@
 import React, { useMemo, useState } from "react";
 import { PieChart, Pie, Label, Sector } from "recharts";
 import Image from "next/image";
-import type {
-  PieSectorDataItem,
-  PieSectorShapeProps,
-} from "recharts/types/polar/Pie";
+import type { PieSectorShapeProps } from "recharts/types/polar/Pie";
 import {
   Card,
   CardContent,
@@ -28,7 +25,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import "../app/globals.css";
+import "../../../app/globals.css";
 const monthlyData = {
   january: [
     { component: "Copra", number: 900, fill: "var(--color-copra)" },
@@ -195,7 +192,7 @@ const CompGauge = () => {
                   return (
                     <g>
                       <circle
-                        cx={viewBox.cx - 100}
+                        cx={viewBox.cx - 130}
                         cy={viewBox.cy}
                         r={imageSize / 2}
                         fill="#f3f4f6"
@@ -203,7 +200,7 @@ const CompGauge = () => {
                       <image
                         href="/coconut.png"
                         className="rounded-full"
-                        x={viewBox.cx - imageSize / 2 - 100}
+                        x={viewBox.cx - imageSize / 2 - 130}
                         y={viewBox.cy - imageSize / 2}
                         width={imageSize}
                         height={imageSize}

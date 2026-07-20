@@ -4,12 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import {
-  Calendar as CalendarIcon,
-  PlusCircle,
-  Loader2,
-  Form,
-} from "lucide-react";
+import { Calendar as CalendarIcon, PlusCircle, Loader2 } from "lucide-react";
 import { addFinancialRecord } from "@/app/action";
 import {
   Field,

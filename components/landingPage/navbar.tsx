@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <>
       <nav className="absolute top-0 left-0 w-full z-20 pointer-events-none">
-        <div className="relative w-full h-full flex justify-between items-center xl:items-start p-3 bg-white xl:bg-transparent">
+        <div className="relative w-full h-full flex justify-between items-center xl:items-start p-3 xl:p-0 bg-white xl:bg-transparent">
           {/* left section navbar */}
           <div className="relative bg-white xl:bg-[#f8f9fa] xl:pl-6 xl:pr-8 xl:pb-3 xl:pt-4 rounded-br-[2rem] flex items-center pointer-events-auto">
             <div className="flex items-center">
@@ -37,7 +37,7 @@ const Navbar = () => {
             <div className="hidden xl:block absolute top-0 left-full w-6 h-6 rounded-tl-2xl shadow-[-10px_-10px_0_0_#f8f9fa] "></div>
           </div>
           {/* center navigation section */}
-          <div className="absolute px-6 top-6 left-1/2 -translate-x-1/2 hidden md:flex items-center gap-6  pointer-events-auto  font-semibold tracking-wider">
+          <div className="absolute px-6 top-6 left-1/2 -translate-x-1/2 hidden xl:flex items-center gap-6  pointer-events-auto  font-semibold tracking-wider">
             {navLink.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -56,17 +56,17 @@ const Navbar = () => {
             })}
           </div>
           {/* right section */}
-          <div className="relative bg-white xl:bg-[#f8f9fa] xl:pr-3 xl:pl-8 xl:pb-5 xl:pt-6 rounded-bl-[2rem] flex items-center gap-6 pointer-events-auto">
+          <div className="relative bg-white xl:bg-[#f8f9fa] xl:pr-3 xl:pl-8 xl:pb-5 xl:pt-6 rounded-bl-[2rem] flex items-center gap-2 pointer-events-auto">
             <div className="hidden xl:block absolute top-0 right-full w-6 h-6 rounded-tr-2xl shadow-[10px_-10px_0_0_#f8f9fa]"></div>
             <CircleUserRound className="hidden xl:block w-6 h-6 text-gray-700 cursor-pointer hover:text-black transition-colors" />
             <Link
               href="/farmer-portal"
-              className="px-4 py-2 font-regular text-sm xl:text-lg bg-[#006C48] rounded-lg text-white"
+              className="px-4 py-2 font-regular text-xs xl:text-lg bg-[#006C48] rounded-lg text-white"
             >
               Farmer Portal
             </Link>
             <button
-              className="md:hidden block text-gray-800 p-1"
+              className="xl:hidden block text-gray-800 p-1"
               onClick={() => setIsSidebarOpen(true)}
             >
               <Menu className="w-6 h-6" />
@@ -75,7 +75,7 @@ const Navbar = () => {
         </div>
       </nav>
       <div
-        className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-50 xl:hidden transition-opacity duration-300 ${
           SidebarOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"

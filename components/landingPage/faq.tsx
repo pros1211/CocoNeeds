@@ -10,18 +10,40 @@ const Faq = () => {
   };
   const faqList = [
     {
-      title: "What can an AI assistant do?",
+      title: "Bagaimana AI CocoNeeds membantu saya memperkirakan hasil panen?",
       answer:
-        "An AI assistant can help forecast the optimal harvest time based on coconut plantation conditions and available data.",
+        "AI CocoNeeds membantu memperkirakan potensi hasil panen berdasarkan jumlah pohon, luas lahan, serta data produksi yang Anda masukkan. Sistem juga menghitung estimasi biomassa seperti sabut, tempurung, air kelapa, dan kopra sehingga petani maupun perusahaan dapat merencanakan produksi dan distribusi dengan lebih baik.",
     },
     {
-      title: "What is the Eco Points feature?",
+      title: "Apakah AI dapat memeriksa kualitas buah kelapa?",
       answer:
-        "Eco points are points that you get every time you sell your harvest or exchange your harvest waste for recycling. These points can be used for",
+        "Ya. Petani dapat mengunggah foto buah kelapa melalui aplikasi, kemudian AI akan membantu mendeteksi tingkat kematangan dan kualitas buah. Hasil analisis ini dapat menjadi referensi sebelum panen maupun saat proses quality control di koperasi.",
     },
     {
-      title: "How do I find a logistics partner for shipping?",
-      answer: "",
+      title: "Apa itu Eco Points?",
+      answer:
+        "Eco Points merupakan sistem penghargaan bagi petani yang menukarkan limbah sabut dan tempurung kelapa melalui CocoNeeds. Poin yang diperoleh dapat ditukar dengan berbagai insentif, seperti token listrik atau saldo e-wallet, sekaligus mendorong pemanfaatan limbah secara lebih berkelanjutan.",
+    },
+    {
+      title: "Bagaimana CocoNeeds membantu pengiriman hasil panen?",
+      answer:
+        "CocoNeeds bekerja sama dengan koperasi desa sebagai pusat konsolidasi hasil panen. Petani dapat memilih layanan penjemputan (pick-up) atau mengirimkan hasil panen secara mandiri ke koperasi. Selanjutnya koperasi akan melakukan pemeriksaan kualitas sebelum produk dikirim ke perusahaan.",
+    },
+    {
+      title: "Apa manfaat Certificate of Authenticity?",
+      answer:
+        "Setelah produk lolos proses verifikasi di koperasi desa, CocoNeeds menerbitkan Certificate of Authenticity yang berisi identitas digital dan riwayat distribusi produk. Sertifikat ini membantu meningkatkan transparansi, kepercayaan pembeli, dan mendukung kebutuhan keterlacakan produk.",
+    },
+    {
+      title:
+        'Bagaimana cara kerja "crowd supplying" untuk mengoptimalkan pasokan dari berbagai petani? ',
+      answer:
+        "Melalui fitur Crowd-Supplying Marketplace, CocoNeeds menggabungkan hasil panen dari beberapa petani melalui koperasi desa. Dengan demikian, perusahaan tetap dapat memperoleh pasokan dalam jumlah besar tanpa bergantung pada satu pemasok saja.",
+    },
+    {
+      title: "Apakah CocoNeeds dapat digunakan tanpa koneksi internet?",
+      answer:
+        "Ya. CocoNeeds dikembangkan sebagai Progressive Web App (PWA) sehingga dapat diinstal seperti aplikasi. Pengguna tetap dapat mengakses data dan laporan yang telah tersimpan meskipun koneksi internet sedang terbatas.",
     },
   ];
   return (

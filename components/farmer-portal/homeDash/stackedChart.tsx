@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
-import CompGauge from "../../compGauge";
-import ProfitChart from "../../profitChart";
+import CompGauge from "./compGauge";
+import ProfitChart from "./profitChart";
 export default function StackedChart() {
   const [activeTab, setActiveTab] = useState<"Profit" | "Composition">(
     "Profit",

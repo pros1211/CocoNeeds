@@ -44,12 +44,12 @@ const Features = () => {
   }, [emblaApi]);
   return (
     <>
-      <div className="flex flex-col text-center items-center gap-8 py-12 px-4 w-full bg-[#F8F9FA] shadow-md rounded-xl">
+      <div className="flex flex-col text-center items-center gap-8 py-12 px-4 w-full bg-[#F8F9FA] bg-gray-100 border border-gray-200 shadow-md rounded-xl">
         <div className="flex flex-col items-center max-w-[650px] gap-4 justify-center">
-          <p className="capitalize text-xl font-semibold text-[#8C7851]">
+          <p className="capitalize text-md lg:text-xl font-semibold text-[#8C7851]">
             Layanan Kami
           </p>
-          <h2 className="text-2xl font-semibold">
+          <h2 className="text-lg lg:text-2xl font-semibold">
             Satu Platform untuk Petani, Koperasi, Logistik, dan Perusahaan
           </h2>
         </div>
@@ -58,34 +58,35 @@ const Features = () => {
             {coreFeatures.map((features, index) => (
               <div
                 key={index}
-                className="shrink-0 w-[85vw] md:w-[500px] group relative flex flex-col justify-end h-[450px] rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-transparent hover:border-tertiary/50 transition-all duration-500 shadow-lg bg-cover bg-center bg-no-repeat"
+                className="shrink-0 w-[85vw] lg:w-[500px] group  relative flex flex-col justify-end h-auto lg:h-[450px] rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing border border-gray-300 lg:border-transparent hover:border-tertiary/50 transition-all duration-500 shadow-lg bg-cover bg-center bg-no-repeat"
               >
-                <Image
-                  sizes="(max-width: 768px)"
-                  fill
-                  src={features.image}
-                  alt={features.title}
-                  className="absolute inset-0 w-full h-full object-cover object-center z-0"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/50 to-black/80 z-0 opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative w-full h-[220px] shrink-0 md:h-full md:absolute md:inset-0 z-0">
+                  <Image
+                    sizes="(max-width: 768px) 85vw, 500px"
+                    fill
+                    src={features.image}
+                    alt={features.title}
+                    className="absolute inset-0 w-full h-full object-cover object-center z-0"
+                  />
+                </div>
+                <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent z-0 opacity-100 lg:opacity-80 lg:group-hover:opacity-100 transition-opacity duration-500" />
 
-                <div className="relative z-10 flex flex-col justify-between h-full p-8">
+                <div className="relative z-10 flex flex-col justify-evenly xl:justify-between h-full p-4">
                   <span className="px-4 py-1 text-xs font-bold bg-tertiary/70 text-white border border-tertiary/30 rounded-full w-fit">
                     {features.category}
                   </span>
-
                   <div className="flex flex-col">
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:-translate-y-2 transition-transform duration-500">
+                    <h3 className="text-lg lg:text-2xl font-bold text-gray-900 md:text-white mb-2 xl:group-hover:-translate-y-2 transition-transform duration-500">
                       {features.title}
                     </h3>
 
-                    <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out">
+                    <div className="grid grid-rows-[1fr] opacity-100 lg:grid-rows-[0fr] lg:opacity-0 lg:group-hover:grid-rows-[1fr] lg:group-hover:opacity-100 transition-all duration-500 ease-in-out">
                       <div className="overflow-hidden">
-                        <p className="text-white text-sm leading-relaxed pb-4 font-medium">
+                        <p className="text-gray-600 lg:text-gray-200 text-xs text-justify p-2 leading-relaxed pb-4 font-medium">
                           {features.description}
                         </p>
 
-                        <button className="flex items-center gap-2 text-white font-semibold text-sm hover:translate-x-1 hover:text-[#F9DFB1] transition-transform duration-300">
+                        <button className="flex items-center gap-2 text-[#3BA275] md:text-white font-semibold text-sm hover:translate-x-1 hover:text-[#216533] md:hover:text-[#F9DFB1] transition-transform duration-300">
                           Learn More <ArrowRight className="w-4 h-4" />
                         </button>
                       </div>

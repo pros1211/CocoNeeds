@@ -7,7 +7,7 @@ function Core() {
       stat: "AI Forecasting",
       title: "Prediksi Panen yang Lebih Akurat",
       description:
-        "Teknologi AI membantu memperkirakan waktu dan kualitas hasil panen berdasarkan data lahan dan kondisi produksi. Membantu petani  mengoptimalkan kebutuhan pasokan dengan lebih tepat sehingga risiko kekurangan atau kelebihan stok dapat diminimalkan.",
+        "Teknologi AI membantu memperkirakan waktu dan kualitas hasil panen berdasarkan data dan kondisi produksi. Membantu petani mengoptimalkan kebutuhan pasokan sehingga risiko kekurangan atau kelebihan stok dapat diminimalkan.",
     },
     {
       stat: "Smart Logistic",
@@ -35,21 +35,21 @@ function Core() {
           Membangun Agroindustri yang Lebih Efisien dan Berkelanjutan
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 max-w-7xl w-full">
+        <div className="grid grid-cols-1 gap-4 lg:gap-0 md:grid-cols-2 lg:grid-cols-4 max-w-7xl w-full">
           {advantageDesc.map((card, index) => (
             <div
               key={index}
-              className="group flex flex-col rounded-2xl p-8 border border-gray-200 justify-center items-center cursor-pointer shadow-sm hover:shadow-lg hover:border-[#3BA275]/50 transition-all duration-500"
+              className="group flex flex-col rounded-2xl lg:gap-0 p-8 border border-gray-200 justify-center items-center cursor-pointer shadow-sm hover:shadow-lg hover:border-[#3BA275]/50 transition-all duration-500"
             >
-              <span className="text-3xl font-bold text-[#3BA275]/80 mb-3 group-hover:-translate-y-1 transition-transform duration-500">
+              <span className="text-xl xl:text-3xl font-bold text-[#3BA275]/80 mb-3 lg:group-hover:-translate-y-1 transition-transform duration-500">
                 {card.stat}
               </span>
-              <p className="font-regular text-xl text-center group-hover:-translate-y-1 transition-transform duration-500">
+              <p className="font-regular text-xl text-center lg:group-hover:-translate-y-1 transition-transform duration-500">
                 {card.title}
               </p>
-              <div className="grid grid-rows-[0fr] opacity-0 group-hover:grid-rows-[1fr] group-hover:opacity-100 transition-all duration-500 ease-in-out w-full">
+              <div className="grid grid-rows-[1fr] xl:grid-rows-[0fr] opacity-100 xl:opacity-0 xl:group-hover:grid-rows-[1fr] xl:group-hover:opacity-100 transition-all duration-500 ease-in-out w-full">
                 <div className="overflow-hidden">
-                  <p className="pt-4 text-sm text-justify text-gray-500 font-normal leading-relaxed border-t border-gray-100 mt-4">
+                  <p className="pt-4 text-xs lg:text-sm text-center xl:text-justify text-gray-500 font-normal leading-relaxed border-t border-gray-100 mt-4">
                     {card.description}
                   </p>
                 </div>

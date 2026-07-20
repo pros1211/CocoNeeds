@@ -17,7 +17,7 @@ import {
   ChartTooltip,
   ChartTooltipContent,
   ChartConfig,
-} from "./ui/chart";
+} from "../../ui/chart";
 const chartData = [
   { month: "Jan", copra: 300, shell: 450, water: 450, profit: 350 },
   { month: "Feb", copra: 350, shell: 400, water: 450, profit: 550 },
