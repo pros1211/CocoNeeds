@@ -155,9 +155,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
           </DialogHeader>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
             <div className="flex flex-col gap-2">
-              <Label className="font-semibold text-gray-700">
-                Pilih Lahan *
-              </Label>
+              <Label className="font-semibold text-gray-700">Pilih Lahan</Label>
               <select
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 required
@@ -175,12 +173,40 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
               </select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label>Tanggal Panen *</Label>
-              <Input type="date" name="tanggal_panen" required />
+              <Label>Tanggal Panen</Label>
+              <Popover>
+                <PopoverTrigger
+                  className={cn(
+                    "flex h-10 w-full items-center justify-start rounded-xl border border-input bg-background px-4 py-2 text-sm font-normal shadow-sm ring-offset-background hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+                    !maintenanceDate && "text-muted-foreground",
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {maintenanceDate ? (
+                    format(maintenanceDate, "dd MMMM yyyy", { locale: id })
+                  ) : (
+                    <span>Pilih tanggal</span>
+                  )}
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={maintenanceDate}
+                    onSelect={setMaintenanceDate}
+                  />
+                </PopoverContent>
+              </Popover>
+              <input
+                type="hidden"
+                name="tanggal_panen"
+                value={
+                  maintenanceDate ? format(maintenanceDate, "yyyy-MM-dd") : ""
+                }
+              />
             </div>
             <div className="flex gap-4">
               <div className="flex flex-col gap-2 flex-1">
-                <Label>Jenis Kelapa *</Label>
+                <Label>Jenis Kelapa</Label>
                 <select
                   name="jenis_kelapa"
                   required
@@ -192,7 +218,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 </select>
               </div>
               <div className="flex flex-col gap-2 flex-1">
-                <Label>Usia Kelapa *</Label>
+                <Label>Usia Kelapa</Label>
                 <select
                   name="kategori_usia"
                   required
@@ -205,13 +231,17 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
             </div>
             <div className="flex gap-4">
               <div className="flex flex-col gap-2 flex-1">
-                <Label>Jumlah Butir *</Label>
+                <Label>Jumlah Butir</Label>
                 <Input type="number" placeholder="Cth: 500" required />
               </div>
               <div className="flex flex-col gap-2 flex-1">
                 <Label>Berat Total (Kg)</Label>
                 <Input type="number" placeholder="Cth: 750" />
               </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label>Jumlah Rusak / Busuk</Label>
+              <Input type="number" name="jumlah_rusak" placeholder="Cth: 12" />
             </div>
             <Button
               type="submit"
@@ -232,9 +262,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
           </DialogHeader>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
             <div className="flex flex-col gap-2">
-              <Label className="font-semibold text-gray-700">
-                Pilih Lahan *
-              </Label>
+              <Label className="font-semibold text-gray-700">Pilih Lahan</Label>
               <select
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 required
@@ -252,7 +280,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
               </select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label>Tanggal perawatan *</Label>
+              <Label>Tanggal perawatan</Label>
               <Popover>
                 <PopoverTrigger
                   className={cn(
@@ -359,9 +387,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
           </DialogHeader>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-2">
             <div className="flex flex-col gap-2">
-              <Label className="font-semibold text-gray-700">
-                Pilih Lahan *
-              </Label>
+              <Label className="font-semibold text-gray-700">Pilih Lahan</Label>
               <select
                 className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                 required
@@ -379,7 +405,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
               </select>
             </div>
             <div className="flex flex-col gap-2">
-              <Label>Tanggal produksi *</Label>
+              <Label>Tanggal produksi</Label>
               <Popover>
                 <PopoverTrigger
                   className={cn(

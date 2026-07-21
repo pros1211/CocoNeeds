@@ -308,7 +308,7 @@ export async function addMaintenanceLog(data: maintenanceInput) {
       bibit_ditambah: data.bibit_ditambah ? Number(data.bibit_ditambah) : null,
       pohon_mati: data.pohon_mati ? Number(data.pohon_mati) : null,
       jenis_pupuk: data.jenis_pupuk || null,
-      jumlah_pupuk_kg: data.jumlah_pupuk ? Number(data.jumlah_pupuk) : null,
+      jumlah_pupuk: data.jumlah_pupuk ? Number(data.jumlah_pupuk) : null,
     },
   ]);
 
