@@ -13,7 +13,7 @@ const Task = async () => {
     console.error("Failed to fetch tasks:", error);
   }
   return (
-    <div className="xl:col-span-3 flex flex-col p-5 w-full gap-4 bg-white rounded-2xl shadow-md">
+    <div className="xl:col-span-3 flex flex-col p-5 w-full gap-4 bg-white rounded-2xl shadow-md h-full overflow-y-auto">
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-4">
           <ListTodo className="w-6 h-6" />

@@ -22,7 +22,7 @@ const Navbar = () => {
       <nav className="absolute top-0 left-0 w-full z-20 pointer-events-none">
         <div className="relative w-full h-full flex justify-between items-center xl:items-start p-3 xl:p-0 bg-white xl:bg-transparent">
           {/* left section navbar */}
-          <div className="relative bg-white xl:bg-[#f8f9fa] xl:pl-6 xl:pr-8 xl:pb-3 xl:pt-4 rounded-br-[2rem] flex items-center pointer-events-auto">
+          <div className="relative bg-white xl:bg-[#f8f9fa] xl:pl-6 xl:pr-8 xl:pb-5 xl:pt-4 rounded-br-[2rem] flex items-center pointer-events-auto">
             <div className="flex items-center">
               <Image
                 src="/cocoLogo.jpg"
@@ -56,12 +56,12 @@ const Navbar = () => {
             })}
           </div>
           {/* right section */}
-          <div className="relative bg-white xl:bg-[#f8f9fa] xl:pr-3 xl:pl-8 xl:pb-5 xl:pt-6 rounded-bl-[2rem] flex items-center gap-2 pointer-events-auto">
+          <div className="relative bg-white xl:bg-[#f8f9fa] xl:pr-3 xl:pl-6 xl:pb-5 xl:pt-4 rounded-bl-[2rem] flex items-center gap-3 pointer-events-auto">
             <div className="hidden xl:block absolute top-0 right-full w-6 h-6 rounded-tr-2xl shadow-[10px_-10px_0_0_#f8f9fa]"></div>
             <CircleUserRound className="hidden xl:block w-6 h-6 text-gray-700 cursor-pointer hover:text-black transition-colors" />
             <Link
               href="/farmer-portal"
-              className="px-4 py-2 font-regular text-xs xl:text-lg bg-[#006C48] rounded-lg text-white"
+              className="px-3 py-2 font-regular text-xs xl:text-lg bg-[#006C48] rounded-lg text-white"
             >
               Farmer Portal
             </Link>
@@ -116,7 +116,7 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsSidebarOpen(false)} // Close sidebar on click
+                  onClick={() => setIsSidebarOpen(false)}
                   className={`capitalize px-4 py-3 rounded-xl font-semibold transition-colors ${
                     isActive
                       ? "bg-[#006C48]/10 text-[#006C48]"

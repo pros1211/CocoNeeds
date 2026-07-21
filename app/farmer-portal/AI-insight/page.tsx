@@ -44,7 +44,6 @@ const AIInsight = () => {
 
   return (
     <div className="w-full h-[600px] flex gap-6 p-6">
-      {/* LEFT SIDE: The Interactive ArcGIS Map */}
       <div className="w-1/2 h-full relative shadow-sm rounded-2xl border border-gray-200 overflow-hidden">
         <DynamicPlotMap
           plots={MOCK_PLOTS}

@@ -36,7 +36,7 @@ export const FormLand = () => {
   });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Stop the page from reloading
+    e.preventDefault();
 
     if (!coordinates) {
       alert("Please draw your land boundaries on the map first!");
@@ -44,17 +44,14 @@ export const FormLand = () => {
     }
 
     const newPlot = {
-      id: `plot-${Date.now()}`, // Generate a random ID
+      id: `plot-${Date.now()}`,
       name: formData.name,
-      area: formData.area + " Ha", // Append Hectares
-      trees: Number(formData.trees), // Convert string to number
+      area: formData.area + " Ha",
+      trees: Number(formData.trees),
       coordinates: coordinates,
     };
 
     console.log("Saving new land to database:", newPlot);
-
-    // Here you would normally send 'newPlot' to Supabase or your API.
-    // For now, we will just close the sheet and reset the form.
     setIsOpen(false);
     setCoordinates(null);
     setFormData({ name: "", area: "", trees: "" });

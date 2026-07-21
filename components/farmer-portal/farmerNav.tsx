@@ -9,10 +9,12 @@ import {
   Recycle,
   icons,
 } from "lucide-react";
+import { TreePalm } from "lucide-react";
 import { VscSparkleCompact } from "react-icons/vsc";
 import Image from "next/image";
 const navigation = [
   { name: "home", href: "/farmer-portal", icon: House },
+  { name: "Lahan", href: "/farmer-portal/lahan", icon: TreePalm },
   {
     name: "assistant",
     href: "/farmer-portal/AI-insight",

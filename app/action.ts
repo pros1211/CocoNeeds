@@ -229,3 +229,111 @@ export async function addDailyLog(inputData: dailyInput) {
     return { success: false, error: "Internal Server Error" };
   }
 }
+export type inputLahan = {
+  nama: string;
+  luas: number;
+  jumlah_pohon: number;
+};
+export async function tambahLahan(inputData: inputLahan) {
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase.from("lahan").insert([
+      {
+        nama: inputData.nama,
+        luas: inputData.luas,
+        jumlah_pohon: inputData.jumlah_pohon,
+      },
+    ]);
+    if (error) {
+      console.error("Supabase error:", error.message);
+      return { success: false, error: error.message };
+    }
+    revalidatePath("/farmer-portal/lahan");
+    return { success: true };
+  } catch (err) {
+    console.error("Server Action Error:", err);
+    return { success: false, error: "Internal Server Error" };
+  }
+}
+export type harvestInput = {
+  lahan_id: string;
+  tanggal_panen: string;
+  jenis_kelapa: string;
+  kategori_usia: string;
+  jumlah: number;
+  berat_total: number;
+  jumlah_rusak?: number;
+};
+export async function addHarvestLog(data: harvestInput) {
+  try {
+    const supabase = await createClient();
+    const { error } = await supabase.from("data_panen").insert([
+      {
+        lahan_id: data.lahan_id,
+        tanggal_panen: data.tanggal_panen,
+        jenis_kelapa: data.jenis_kelapa,
+        kategori_usia: data.kategori_usia,
+        jumlah_rusak: data.jumlah_rusak ? Number(data.jumlah_rusak) : null,
+        berat_total: Number(data.berat_total),
+      },
+    ]);
+    if (error) return { success: false, error: error.message };
+    revalidatePath("/farmer-portal/lahan");
+    return { success: true };
+  } catch (err) {
+    console.error("Server Action Error:", err);
+    return { success: false, error: "Internal Server Error" };
+  }
+}
+export type maintenanceInput = {
+  lahan_id: string;
+  tanggal_perawatan: string;
+  ph_tanah?: number;
+  kelembapan_tanah?: number;
+  bibit_ditambah?: number;
+  pohon_mati?: number;
+  jenis_pupuk: string;
+  jumlah_pupuk: number;
+};
+export async function addMaintenanceLog(data: maintenanceInput) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("maintenance_logs").insert([
+    {
+      lahan_id: data.lahan_id,
+      tanggal_perawatan: data.tanggal_perawatan,
+      ph_tanah: data.ph_tanah ? Number(data.ph_tanah) : null,
+      kelembapan_tanah: data.kelembapan_tanah
+        ? Number(data.kelembapan_tanah)
+        : null,
+      bibit_ditambah: data.bibit_ditambah ? Number(data.bibit_ditambah) : null,
+      pohon_mati: data.pohon_mati ? Number(data.pohon_mati) : null,
+      jenis_pupuk: data.jenis_pupuk || null,
+      jumlah_pupuk_kg: data.jumlah_pupuk ? Number(data.jumlah_pupuk) : null,
+    },
+  ]);
+
+  if (error) return { success: false, error: error.message };
+  revalidatePath("/farmer-portal/lahan");
+  return { success: true };
+}
+export type produksiInput = {
+  lahan_id: string;
+  tanggal_produksi: string;
+  jenis_produk: string;
+  jumlah_kg: number;
+};
+export async function addProductionLog(data: produksiInput) {
+  const supabase = await createClient();
+  const { error } = await supabase.from("production_logs").insert([
+    {
+      lahan_id: data.lahan_id,
+      tanggal_produksi: data.tanggal_produksi,
+      jenis_produk: data.jenis_produk,
+      jumlah_kg: Number(data.jumlah_kg),
+    },
+  ]);
+
+  if (error) return { success: false, error: error.message };
+  revalidatePath("/farmer-portal/lahan");
+  return { success: true };
+}

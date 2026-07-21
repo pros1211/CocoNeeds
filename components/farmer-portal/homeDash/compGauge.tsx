@@ -4,13 +4,6 @@ import { PieChart, Pie, Label, Sector } from "recharts";
 import Image from "next/image";
 import type { PieSectorShapeProps } from "recharts/types/polar/Pie";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
@@ -108,10 +101,6 @@ const CompGauge = () => {
   );
   const [activeMonth, setMonth] = useState<keyof typeof monthlyData>("january");
   const activeData = monthlyData[activeMonth];
-  const totalSales = useMemo(() => {
-    if (!activeData) return 0;
-    return activeData.reduce((acc, curr) => acc + curr.number, 0);
-  }, [activeData]);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const renderPieShape = (props: PieSectorShapeProps) => {
     const { outerRadius = 0, innerRadius = 0, index } = props;
