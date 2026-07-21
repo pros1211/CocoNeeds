@@ -176,7 +176,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
             </div>
             <div className="flex flex-col gap-2">
               <Label>Tanggal Panen *</Label>
-              <Input type="date" required />
+              <Input type="date" name="tanggal_panen" required />
             </div>
             <div className="flex gap-4">
               <div className="flex flex-col gap-2 flex-1">

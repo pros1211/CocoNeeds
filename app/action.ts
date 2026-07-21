@@ -297,7 +297,7 @@ export type maintenanceInput = {
 };
 export async function addMaintenanceLog(data: maintenanceInput) {
   const supabase = await createClient();
-  const { error } = await supabase.from("maintenance_logs").insert([
+  const { error } = await supabase.from("maintenance_log").insert([
     {
       lahan_id: data.lahan_id,
       tanggal_perawatan: data.tanggal_perawatan,
@@ -324,7 +324,7 @@ export type produksiInput = {
 };
 export async function addProductionLog(data: produksiInput) {
   const supabase = await createClient();
-  const { error } = await supabase.from("production_logs").insert([
+  const { error } = await supabase.from("data_produksi").insert([
     {
       lahan_id: data.lahan_id,
       tanggal_produksi: data.tanggal_produksi,
