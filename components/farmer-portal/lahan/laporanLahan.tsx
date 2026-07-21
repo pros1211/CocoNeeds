@@ -113,14 +113,9 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
   return (
     <>
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            className="text-[#269957] border-[#269957] hover:bg-[#269957]/10 font-semibold rounded-xl"
-          >
-            <FileText className="w-4 h-4 mr-2" />
-            Laporan Lahan
-          </Button>
+        <DropdownMenuTrigger className="inline-flex items-center justify-center rounded-xl border border-[#269957] bg-background px-4 py-2 text-sm font-semibold text-[#269957] shadow-sm hover:bg-[#269957]/10 transition-colors">
+          <FileText className="w-4 h-4 mr-2" />
+          Laporan Lahan
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"
