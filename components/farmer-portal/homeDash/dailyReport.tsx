@@ -19,13 +19,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -34,7 +28,35 @@ import {
 } from "@/components/ui/popover";
 import { addDailyLog } from "@/app/action";
 import { Calendar } from "@/components/ui/calendar";
+import { Label } from "@/components/ui/label";
+import { cn } from "@/lib/utils";
+import { id } from "date-fns/locale";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+interface LahanOption {
+  id: string;
+  nama: string;
+}
+
+interface DailyReportProps {
+  lahanList: LahanOption[];
+}
+const pestLabel = {
+  tidak_ada: "Tidak Ada",
+  kumbang_badak: "Kumbang Badak",
+  kumbang_moncong: "Kumbang Moncong",
+  ulat: "Ulat",
+  jamur: "Jamur",
+  lainnya: "Lainnya",
+} as const;
+type PestType = keyof typeof pestLabel;
 const formSchema = z.object({
+  lahan_id: z.string().min(1, "Silakan pilih lahan terlebih dahulu"),
   tanggal: z.date({ error: "pilih tanggal" }),
   is_watered: z.boolean({ error: "Status penyiraman tidak boelh kosong" }),
   fruit_drop: z.coerce
@@ -46,13 +68,15 @@ const formSchema = z.object({
   pest_type: z.string().min(1, "jenis hama tidak boleh kosong"),
   weather: z.string().min(1, "cuaca tidak boleh kosong"),
 });
-const DailyReport = () => {
+const DailyReport = ({ lahanList }: DailyReportProps) => {
   const [open, setOpen] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     resolver: zodResolver(formSchema) as any,
     defaultValues: {
-      tanggal: new Date(),
+      lahan_id: "",
+      tanggal: undefined,
       is_watered: false,
       fruit_drop: 0,
       harvest_count: 0,
@@ -60,10 +84,10 @@ const DailyReport = () => {
       weather: "cerah",
     },
   });
-  const { isSubmitting } = form.formState;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await addDailyLog({
+        lahan_id: values.lahan_id,
         tanggal: values.tanggal,
         is_watered: values.is_watered,
         fruit_drop: values.fruit_drop,
@@ -82,6 +106,7 @@ const DailyReport = () => {
       console.error("Submission error:", error);
     }
   };
+  const { errors, isSubmitting } = form.formState;
   return (
     <Dialog>
       <DialogTrigger className="p-2 bg-[#3BA275] flex items-center gap-2 text-white rounded-2xl text-sm font-semibold">
@@ -93,132 +118,149 @@ const DailyReport = () => {
             Laporan Harian
           </DialogTitle>
         </DialogHeader>
-        <form id="form_harian" onSubmit={form.handleSubmit(onSubmit)}>
-          <FieldGroup className="space-y-4">
-            <Controller
-              name="tanggal"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field
-                  data-invalid={fieldState.invalid}
-                  className="flex flex-col"
-                >
-                  <FieldLabel>Tanggal</FieldLabel>
-                  <Popover>
-                    <PopoverTrigger>
-                      <div
-                        className={`flex h-10 w-full items-center justify-between rounded-xl border border-input bg-gray-100/50 focus:bg-white px-3 py-2 text-sm shadow-sm transition-colors cursor-pointer ${
-                          !field.value
-                            ? "text-muted-foreground"
-                            : "text-gray-900"
-                        }`}
-                        aria-invalid={fieldState.invalid}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pilih Tanggal</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </div>
-                    </PopoverTrigger>
-                    <PopoverContent>
-                      <PopoverContent
-                        className="w-auto p-0 bg-white"
-                        align="start"
-                      >
-                        <Calendar
-                          mode="single"
-                          selected={field.value}
-                          onSelect={field.onChange}
-                        />
-                      </PopoverContent>
-                    </PopoverContent>
-                  </Popover>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="is_watered"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Status Penyiraman</FieldLabel>
-                  <Select
-                    onValueChange={(val) => field.onChange(val === "true")}
-                    value={field.value ? "true" : "false"}
+        <form
+          id="form_harian"
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col gap-4 mt-2"
+        >
+          <Controller
+            name="tanggal"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel>Tanggal</FieldLabel>
+                <Popover>
+                  <PopoverTrigger
+                    className={cn(
+                      "flex h-10 w-full items-center gap-4 rounded-xl border border-input bg-background px-4 py-2 text-sm font-normal shadow-sm ring-offset-background hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+                    )}
+                    aria-invalid={fieldState.invalid}
                   >
-                    <SelectTrigger className="rounded-xl bg-gray-100/50 border-transparent focus:bg-white">
-                      <SelectValue placeholder="Pilih status penyiraman" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white rounded-xl">
-                      <SelectItem value="true">Sudah Disiram</SelectItem>
-                      <SelectItem value="false">Belum Disiram</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="fruit_drop"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Jumlah Buah Jatuh (Gugur)</FieldLabel>
-                  <Input
-                    {...field}
-                    type="number"
-                    placeholder="0"
-                    className="rounded-xl bg-gray-100/50 border-transparent focus:bg-white"
+                    <CalendarIcon className="mr-2 h-4 w-4" />
+                    {field.value
+                      ? format(field.value, "dd MMMM yyyy", { locale: id })
+                      : "Pilih tanggal"}
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                    />
+                  </PopoverContent>
+                </Popover>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+          <Controller
+            name="lahan_id"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel>Lahan</FieldLabel>
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger
                     aria-invalid={fieldState.invalid}
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-
-            {/* 4. HARVEST COUNT (Number Input) */}
-            <Controller
-              name="harvest_count"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Jumlah Panen Hari Ini</FieldLabel>
-                  <Input
-                    {...field}
-                    type="number"
-                    placeholder="0"
-                    className="rounded-xl bg-gray-100/50 border-transparent focus:bg-white"
+                    className="w-full rounded-xl h-10 bg-gray-100/50"
+                  >
+                    <SelectValue placeholder="Pilih lahanmu">
+                      {field.value
+                        ? lahanList.find((lahan) => lahan.id === field.value)
+                            ?.nama
+                        : "Pilih lahan"}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent>
+                    {lahanList.map((lahan) => (
+                      <SelectItem key={lahan.id} value={lahan.id}>
+                        {lahan.nama}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+          <Controller
+            name="is_watered"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel>Status penyiraman</FieldLabel>
+                <Select
+                  value={field.value ? "true" : "false"}
+                  onValueChange={(val) => field.onChange(val === "true")}
+                >
+                  <SelectTrigger
                     aria-invalid={fieldState.invalid}
-                  />
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
+                    className="rounded-xl h-10 bg-gray-100/50"
+                  >
+                    <SelectValue>
+                      {field.value ? "Sudah Disiram" : "Belum Disiram"}
+                    </SelectValue>
+                  </SelectTrigger>
+                  <SelectContent className="rounded-xl">
+                    <SelectItem value="true">Sudah Disiram</SelectItem>
+                    <SelectItem value="false">Belum Disiram</SelectItem>
+                  </SelectContent>
+                </Select>
+                {fieldState.invalid && (
+                  <FieldError errors={[fieldState.error]} />
+                )}
+              </Field>
+            )}
+          />
+          <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-2">
+              <Label>Jumlah Panen Hari Ini</Label>
+              <Input
+                type="number"
+                className="rounded-xl h-10 bg-gray-100/50"
+                {...form.register("harvest_count", {
+                  valueAsNumber: true,
+                })}
+              />
+              {errors.harvest_count && (
+                <p className="text-sm text-red-500">
+                  {errors.harvest_count.message}
+                </p>
               )}
-            />
-
-            {/* 5. PEST TYPE (Dropdown) */}
+            </div>
+            <div className="flex flex-col gap-2">
+              <Label>Jumlah Buah Jatuh (Gugur)</Label>
+              <Input
+                type="number"
+                className="rounded-xl h-10 bg-gray-100/50"
+                {...form.register("fruit_drop", {
+                  valueAsNumber: true,
+                })}
+              />
+            </div>
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label>Hama</Label>
             <Controller
               name="pest_type"
               control={form.control}
               render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Deteksi Hama</FieldLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className="rounded-xl bg-gray-100/50 border-transparent focus:bg-white">
-                      <SelectValue placeholder="Pilih hama (jika ada)" />
+                <Field data-invalid={fieldState}>
+                  <Select value={field.value} onValueChange={field.onChange}>
+                    <SelectTrigger
+                      aria-invalid={fieldState.invalid}
+                      className="w-full rounded-xl h-10 bg-gray-100/50"
+                    >
+                      <SelectValue>
+                        {pestLabel[field.value as PestType]}
+                      </SelectValue>
                     </SelectTrigger>
-                    <SelectContent className="bg-white rounded-xl">
-                      <SelectItem value="tidak_ada">Tidak Ada Hama</SelectItem>
+                    <SelectContent>
+                      <SelectItem value="tidak_ada">Tidak Ada</SelectItem>
                       <SelectItem value="kumbang_badak">
                         Kumbang Badak
                       </SelectItem>
@@ -226,9 +268,7 @@ const DailyReport = () => {
                         Kumbang Moncong
                       </SelectItem>
                       <SelectItem value="ulat">Ulat</SelectItem>
-                      <SelectItem value="jamur">
-                        Jamur / Penyakit Busuk
-                      </SelectItem>
+                      <SelectItem value="jamur">Jamur</SelectItem>
                       <SelectItem value="lainnya">Lainnya</SelectItem>
                     </SelectContent>
                   </Select>
@@ -238,39 +278,32 @@ const DailyReport = () => {
                 </Field>
               )}
             />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label>Cuaca</Label>
             <Controller
               name="weather"
               control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel>Kondisi Cuaca</FieldLabel>
-                  <Select onValueChange={field.onChange} value={field.value}>
-                    <SelectTrigger className="rounded-xl bg-gray-100/50 border-transparent focus:bg-white">
-                      <SelectValue placeholder="Pilih cuaca hari ini" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-white rounded-xl">
-                      <SelectItem value="cerah">Cerah</SelectItem>
-                      <SelectItem value="cerah_berawan">
-                        Cerah Berawan
-                      </SelectItem>
-                      <SelectItem value="mendung">Mendung</SelectItem>
-                      <SelectItem value="gerimis">Gerimis</SelectItem>
-                      <SelectItem value="hujan">Hujan</SelectItem>
-                      <SelectItem value="hujan_lebat">Hujan Lebat</SelectItem>
-                      <SelectItem value="badai_petir">Badai Petir</SelectItem>
-                      <SelectItem value="berangin">
-                        Berangin (Angin Kencang)
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
+              render={({ field }) => (
+                <Select value={field.value} onValueChange={field.onChange}>
+                  <SelectTrigger className="w-full rounded-xl h-10 bg-gray-100/50">
+                    <SelectValue placeholder="Pilih Kondisi" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="cerah">Cerah</SelectItem>
+                    <SelectItem value="cerah_berawan">Cerah Berawan</SelectItem>
+                    <SelectItem value="mendung">Mendung</SelectItem>
+                    <SelectItem value="gerimis">Gerimis</SelectItem>
+                    <SelectItem value="hujan">Hujan</SelectItem>
+                    <SelectItem value="hujan_lebat">Hujan Lebat</SelectItem>
+                    <SelectItem value="badai_petir">Badai Petir</SelectItem>
+                    <SelectItem value="berangin">Berangin</SelectItem>
+                  </SelectContent>
+                </Select>
               )}
             />
-          </FieldGroup>
-          <div className="pt-6">
+          </div>
+          <div className="pt-4">
             <Button
               type="submit"
               disabled={isSubmitting}

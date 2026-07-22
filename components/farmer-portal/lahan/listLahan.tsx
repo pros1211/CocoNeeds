@@ -3,16 +3,6 @@ import { MapPin } from "lucide-react";
 import { FormLand } from "@/components/formLand";
 import FormLahan from "./formLahan";
 import { createClient } from "@/utils/supabase/server";
-// interface LandData {
-//   id: string;
-//   name: string;
-//   area: number;
-//   trees: number;
-//   irigasi: string;
-//   pupuk: string;
-//   totalPanen: string;
-//   waktuPanen: string;
-// }
 
 const ListLahan = async () => {
   const supabase = await createClient();

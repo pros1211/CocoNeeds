@@ -88,7 +88,6 @@ const FormLahan = () => {
             )}
           </div>
 
-          {/* AREA & TREES (Side by Side) */}
           <div className="grid grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <Label htmlFor="luas" className="font-semibold text-gray-700">

@@ -8,7 +8,16 @@ import StackedChart from "@/components/farmer-portal/homeDash/stackedChart";
 import Insight from "@/components/farmer-portal/homeDash/insight";
 import Task from "@/components/farmer-portal/homeDash/task";
 import DailyReport from "@/components/farmer-portal/homeDash/dailyReport";
-const FarmerPortal = () => {
+import { createClient } from "@/utils/supabase/server";
+const FarmerPortal = async () => {
+  const supabase = await createClient();
+
+  const { data: lahanData } = await supabase
+    .from("lahan")
+    .select("id, nama")
+    .order("created_at", { ascending: false });
+
+  const lahanOptions = lahanData || [];
   return (
     <main className="w-full h-full px-8 pb-8 grid grid-cols-1 xl:grid-cols-6 gap-6 max-w-screen-2xl mx-auto p-6">
       {/* header content */}
@@ -18,7 +27,7 @@ const FarmerPortal = () => {
             <Greeting />
             <LocalDate />
           </div>
-          <DailyReport />
+          <DailyReport lahanList={lahanOptions} />
         </div>
         <FarmerStat />
       </div>

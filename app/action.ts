@@ -196,6 +196,7 @@ export const getFinancialData = cache(async () => {
   };
 });
 export type dailyInput = {
+  lahan_id: string;
   tanggal: Date;
   is_watered: boolean;
   fruit_drop: number;
@@ -209,8 +210,10 @@ export async function addDailyLog(inputData: dailyInput) {
 
     const { error } = await supabase.from("log_harian").insert([
       {
+        lahan_id: inputData.lahan_id,
         tanggal: inputData.tanggal.toISOString(),
         fruit_drop: inputData.fruit_drop,
+        is_watered: inputData.is_watered,
         pest_type: inputData.pest_type,
         harvest_count: inputData.harvest_count,
         weather: inputData.weather,

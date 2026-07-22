@@ -26,7 +26,7 @@ const navigation = [
     icon: ChartNoAxesCombined,
   },
   { name: "logistics", href: "/logis", icon: Truck },
-  { name: "recycle", href: "/recycle", icon: Recycle },
+  { name: "recycle", href: "/farmer-portal/eco-points", icon: Recycle },
 ];
 const FarmerNav = () => {
   const pathname = usePathname();

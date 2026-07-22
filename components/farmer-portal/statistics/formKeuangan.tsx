@@ -117,7 +117,7 @@ const FormKeuangan = () => {
           </TabsList>
         </Tabs>
         <form id="form-keuangan" onSubmit={form.handleSubmit(onSubmit)}>
-          <FieldGroup className="space-y-4">
+          <FieldGroup>
             <Controller
               name="nominal"
               control={form.control}

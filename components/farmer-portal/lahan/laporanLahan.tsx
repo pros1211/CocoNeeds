@@ -28,7 +28,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { id } from "date-fns/locale";
+import { id, ta } from "date-fns/locale";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 interface LahanOption {
@@ -44,7 +44,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
     "harvest" | "maintenance" | "production" | null
   >(null);
   const [selectedLahan, setSelectedLahan] = useState("");
-  const [maintenanceDate, setMaintenanceDate] = useState<Date>();
+  const [tanggal, setTanggal] = useState<Date>();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const handleClose = () => {
     setActiveForm(null);
@@ -72,10 +72,10 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
         berat_total: Number(formData.get("berat_total")),
       });
     } else if (activeForm === "maintenance") {
-      if (!maintenanceDate) return alert("Pilih tanggal perawatan!");
+      if (!tanggal) return alert("Pilih tanggal perawatan!");
       response = await addMaintenanceLog({
         lahan_id: selectedLahan,
-        tanggal_perawatan: format(maintenanceDate, "yyyy-MM-dd"),
+        tanggal_perawatan: format(tanggal, "yyyy-MM-dd"),
         ph_tanah: formData.get("ph_tanah")
           ? Number(formData.get("ph_tanah"))
           : undefined,
@@ -92,10 +92,10 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
         jumlah_pupuk: Number(formData.get("jumlah_pupuk_kg")),
       });
     } else if (activeForm === "production") {
-      if (!maintenanceDate) return alert("Pilih tanggal produksi!");
+      if (!tanggal) return alert("Pilih tanggal produksi!");
       response = await addProductionLog({
         lahan_id: selectedLahan,
-        tanggal_produksi: format(maintenanceDate, "yyyy-MM-dd"),
+        tanggal_produksi: format(tanggal, "yyyy-MM-dd"),
         jenis_produk: formData.get("jenis_produk") as string,
         jumlah_kg: Number(formData.get("jumlah_kg")),
       });
@@ -178,12 +178,12 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 <PopoverTrigger
                   className={cn(
                     "flex h-10 w-full items-center justify-start rounded-xl border border-input bg-background px-4 py-2 text-sm font-normal shadow-sm ring-offset-background hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-                    !maintenanceDate && "text-muted-foreground",
+                    !tanggal && "text-muted-foreground",
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {maintenanceDate ? (
-                    format(maintenanceDate, "dd MMMM yyyy", { locale: id })
+                  {tanggal ? (
+                    format(tanggal, "dd MMMM yyyy", { locale: id })
                   ) : (
                     <span>Pilih tanggal</span>
                   )}
@@ -191,17 +191,15 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
                     mode="single"
-                    selected={maintenanceDate}
-                    onSelect={setMaintenanceDate}
+                    selected={tanggal}
+                    onSelect={setTanggal}
                   />
                 </PopoverContent>
               </Popover>
               <input
                 type="hidden"
                 name="tanggal_panen"
-                value={
-                  maintenanceDate ? format(maintenanceDate, "yyyy-MM-dd") : ""
-                }
+                value={tanggal ? format(tanggal, "yyyy-MM-dd") : ""}
               />
             </div>
             <div className="flex gap-4">
@@ -285,12 +283,12 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 <PopoverTrigger
                   className={cn(
                     "flex h-10 w-full items-center justify-start rounded-xl border border-input bg-background px-4 py-2 text-sm font-normal shadow-sm ring-offset-background hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-                    !maintenanceDate && "text-muted-foreground",
+                    !tanggal && "text-muted-foreground",
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {maintenanceDate ? (
-                    format(maintenanceDate, "dd MMMM yyyy", { locale: id })
+                  {tanggal ? (
+                    format(tanggal, "dd MMMM yyyy", { locale: id })
                   ) : (
                     <span>Pilih tanggal</span>
                   )}
@@ -298,17 +296,15 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
                     mode="single"
-                    selected={maintenanceDate}
-                    onSelect={setMaintenanceDate}
+                    selected={tanggal}
+                    onSelect={setTanggal}
                   />
                 </PopoverContent>
               </Popover>
               <input
                 type="hidden"
                 name="tanggal_perawatan"
-                value={
-                  maintenanceDate ? format(maintenanceDate, "yyyy-MM-dd") : ""
-                }
+                value={tanggal ? format(tanggal, "yyyy-MM-dd") : ""}
               />
             </div>
             <div className="flex gap-4">
@@ -410,12 +406,12 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 <PopoverTrigger
                   className={cn(
                     "flex h-10 w-full items-center justify-start rounded-xl border border-input bg-background px-4 py-2 text-sm font-normal shadow-sm ring-offset-background hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-                    !maintenanceDate && "text-muted-foreground",
+                    !tanggal && "text-muted-foreground",
                   )}
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
-                  {maintenanceDate ? (
-                    format(maintenanceDate, "dd MMMM yyyy", { locale: id })
+                  {tanggal ? (
+                    format(tanggal, "dd MMMM yyyy", { locale: id })
                   ) : (
                     <span>Pilih tanggal</span>
                   )}
@@ -423,17 +419,15 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
                 <PopoverContent className="w-auto p-0" align="start">
                   <Calendar
                     mode="single"
-                    selected={maintenanceDate}
-                    onSelect={setMaintenanceDate}
+                    selected={tanggal}
+                    onSelect={setTanggal}
                   />
                 </PopoverContent>
               </Popover>
               <input
                 type="hidden"
                 name="tanggal_produksi"
-                value={
-                  maintenanceDate ? format(maintenanceDate, "yyyy-MM-dd") : ""
-                }
+                value={tanggal ? format(tanggal, "yyyy-MM-dd") : ""}
               />
             </div>
             <div className="flex gap-4">
