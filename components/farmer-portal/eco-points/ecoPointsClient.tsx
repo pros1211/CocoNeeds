@@ -4,6 +4,7 @@ import EcoStat from "./ecoStat";
 import EcoMission from "./ecoMission";
 import ExchangeWidget from "./exchangeWidget";
 import ActiveMission from "./activeMission";
+import Link from "next/link";
 const EcoPointsClient = () => {
   return (
     <div className="grid grid-cols-6 gap-6 p-5">
@@ -18,7 +19,12 @@ const EcoPointsClient = () => {
             dapatkan berbagai hadiah menarik!
           </span>
         </div>
-        <button className="bg-[#59BE8E]"></button>
+        <Link
+          href="/farmer-portal/ecoPoint"
+          className="bg-[#59BE8E] text-white rounded-lg p-2"
+        >
+          Tukar Limbah
+        </Link>
       </div>
       <div className="col-span-6 flex flex-col gap-4 w-full">
         <EcoStat />

@@ -13,7 +13,7 @@ import { TreePalm } from "lucide-react";
 import { VscSparkleCompact } from "react-icons/vsc";
 import Image from "next/image";
 const navigation = [
-  { name: "home", href: "/farmer-portal", icon: House },
+  { name: "home", href: "/farmer-portal/", icon: House },
   { name: "Lahan", href: "/farmer-portal/lahan", icon: TreePalm },
   {
     name: "assistant",
@@ -26,7 +26,11 @@ const navigation = [
     icon: ChartNoAxesCombined,
   },
   { name: "logistics", href: "/logis", icon: Truck },
-  { name: "recycle", href: "/farmer-portal/eco-points", icon: Recycle },
+  {
+    name: "recycle",
+    href: "/farmer-portal/eco-points",
+    icon: Recycle,
+  },
 ];
 const FarmerNav = () => {
   const pathname = usePathname();

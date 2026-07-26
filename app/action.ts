@@ -340,3 +340,79 @@ export async function addProductionLog(data: produksiInput) {
   revalidatePath("/farmer-portal/lahan");
   return { success: true };
 }
+export type pengirimanInput = {
+  asal: string;
+  tujuan: string;
+  status: string;
+  jenis: string;
+  delivery_method: string;
+  notes: string;
+  pickup_date?: Date;
+  pickup_time?: Date;
+  total_weight?: number;
+  cooperative_id?: string;
+};
+export type limbahInput = {
+  id_kategori: string;
+  id_pengiriman: string;
+  jumlah: number;
+  satuan: string;
+  bentuk_limbah: string;
+  kebersihan: string;
+  kondisi: string;
+  foto_url: string[];
+};
+export async function addShipment(
+  pengirimanData: pengirimanInput,
+  wasteItems: limbahInput[],
+) {
+  const supabase = await createClient();
+  const { data: newShipment, error: shipmentError } = await supabase
+    .from("pengiriman")
+    .insert([
+      {
+        asal: pengirimanData.asal,
+        tujuan: pengirimanData.tujuan,
+        status: pengirimanData.status,
+        jenis: pengirimanData.jenis,
+        delivery_method: pengirimanData.delivery_method,
+        notes: pengirimanData.notes,
+        pickup_date: pengirimanData.pickup_date,
+        pickup_time: pengirimanData.pickup_time,
+        total_weight: pengirimanData.total_weight,
+        cooperative_id: pengirimanData.cooperative_id,
+      },
+    ])
+    .select("id")
+    .single();
+  if (shipmentError) {
+    return {
+      success: false,
+      error: "Gagal membuat pengiriman: " + shipmentError.message,
+    };
+  }
+  const itemsToInsert = wasteItems.map((limbah) => ({
+    ...limbah,
+    id_pengiriman: newShipment.id,
+    id_kategori: limbah.id_kategori,
+    jumlah: limbah.jumlah,
+    satuan: limbah.satuan,
+    bentuk_limbah: limbah.bentuk_limbah,
+    kebersihan: limbah.kebersihan,
+    kondisi: limbah.kondisi,
+    foto_url: limbah.foto_url,
+  }));
+
+  const { error: wasteError } = await supabase
+    .from("limbah")
+    .insert(itemsToInsert);
+
+  if (wasteError) {
+    return {
+      success: false,
+      error: "Gagal menyimpan detail limbah: " + wasteError.message,
+    };
+  }
+
+  return { success: true, shipmentId: newShipment.id };
+}
