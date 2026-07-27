@@ -35,7 +35,7 @@ const FarmerPortal = async () => {
         <div className="xl:col-span-2 flex gap-4">
           <StackedChart />
         </div>
-        <div className="flex gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <Weather />
           <CopraForecast />
         </div>

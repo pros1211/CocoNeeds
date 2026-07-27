@@ -7,17 +7,17 @@ export default function StackedChart() {
     "Profit",
   );
   return (
-    <div className="flex flex-col w-full h-[200px] bg-white gap-5 p-6 rounded-3xl shadow-sm border border-gray-50 h-full ">
-      <div className="flex items-center justify-between">
-        <h3 className="text-xl font-medium text-gray-800">
+    <div className="flex flex-col w-full min-h-[380px] md:min-h-[450px] bg-white gap-5 p-4   md:p-6 rounded-3xl shadow-sm border border-gray-50 h-full ">
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <h3 className="text-sm md:text-xl font-medium text-gray-800">
           {activeTab === "Profit"
             ? "Yield & Profit Analytics"
             : "Component Sales"}
         </h3>
-        <div className="flex items-center bg-gray-100 p-1 rounded-xl">
+        <div className="flex w-full md:w-fit items-center bg-gray-100 p-1 rounded-xl">
           <button
             onClick={() => setActiveTab("Profit")}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex-1 md:flex-none px-2 md:px-4 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all ${
               activeTab === "Profit"
                 ? "bg-[#A38E65] text-white shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
@@ -27,7 +27,7 @@ export default function StackedChart() {
           </button>
           <button
             onClick={() => setActiveTab("Composition")}
-            className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            className={`flex-1 md:flex-none px-4 py-1.5 rounded-lg text-xs md:text-sm font-medium transition-all ${
               activeTab === "Composition"
                 ? "bg-[#A38E65] text-white shadow-sm"
                 : "text-gray-500 hover:text-gray-700"

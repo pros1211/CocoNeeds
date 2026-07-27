@@ -40,21 +40,21 @@ const legendStats = [
 ];
 const KondisiLahan = () => {
   return (
-    <Card className="shadow-md rounded-xl bg-white px-4">
-      <CardHeader className="flex items-center justify-between">
-        <CardTitle>Kondisi Lahan</CardTitle>
+    <Card className="w-full rounded-2xl border shadow-sm bg-white">
+      <CardHeader className=" flex flex-row items-center justify-between pb-4">
+        <CardTitle className="text-sm lg:text-md">Kondisi Lahan</CardTitle>
         <Link
           href="/farmer-portal/"
-          className="font-semibold text-md text-[#609D7F]"
+          className="font-semibold text-sm lg:text-md text-[#609D7F]"
         >
           Lihat Semua
         </Link>
       </CardHeader>
-      <CardContent className="flex items-center justify-between gap-4 p-6 bg-[#F8F9FA] rounded-lg">
-        <div className="flex-1 ">
+      <CardContent className="flex flex-col md:flex-row items-center gap-6 p-4 md:p-6 bg-[#F8F9FA] rounded-xl">
+        <div className="w-full md:flex-1 flex justify-center ">
           <ChartContainer
             config={chartConfig}
-            className="mx-auto aspect-square w-full max-w-[140px]"
+            className="aspect-square w-[140px] md:w-[170px]"
           >
             <RadialBarChart
               data={chartData}
@@ -109,10 +109,13 @@ const KondisiLahan = () => {
             </RadialBarChart>
           </ChartContainer>
         </div>
-        <div className="flex-1 flex flex-col gap-3">
+        <div className="w-full md:flex-1 flex flex-col gap-3">
           {legendStats.map((item, index) => (
-            <div key={index} className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
+            <div
+              key={index}
+              className="flex items-center justify-between w-full"
+            >
+              <div className="flex items-center w-full gap-2">
                 <div className={`w-3 h-3 rounded-full ${item.color}`} />
                 <span className="text-sm font-semibold text-gray-700">
                   {item.label}

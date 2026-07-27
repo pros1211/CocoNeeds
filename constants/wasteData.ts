@@ -46,3 +46,34 @@ export type Koperasi = {
   status: string;
   jam_operasional: string;
 };
+export type ProductCategory = {
+  id: string;
+  title: string;
+  desc: string;
+  icon: string;
+  defaultSatuan: string;
+};
+
+export const shipmentItems: ProductCategory[] = [
+  {
+    id: "primer",
+    title: "Produk Primer",
+    desc: "Hasil panen utama seperti kelapa utuh, kopra dan kelapa kupas.",
+    icon: "🥥",
+    defaultSatuan: "Kg",
+  },
+  {
+    id: "olahan",
+    title: "Produk Olahan",
+    desc: "Produk yang telah diproses seperti minyak kelapa, briket, VCO.",
+    icon: "🏭",
+    defaultSatuan: "Kg",
+  },
+  {
+    id: "sampingan",
+    title: "Produk Sampingan",
+    desc: "Hasil dari proses pengolahan kelapa seperti sabut, cocofiber.",
+    icon: "♻️",
+    defaultSatuan: "Kg",
+  },
+];

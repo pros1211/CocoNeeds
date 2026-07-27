@@ -7,7 +7,7 @@ export interface ShipmentInput {
 
   status: string;
 
-  jenis: "limbah";
+  jenis: "limbah" | "produk";
 
   cooperative_id?: string;
 
@@ -79,5 +79,76 @@ export const useShipmentStore = create<ShipmentStore>((set) => ({
     set({
       shipment: initialShipment,
       wasteItems: [],
+    }),
+}));
+
+// pengiriman produk
+export interface ProductCondition {
+  bentuk: string;
+  kemasan: string;
+  kualitas: string;
+  kebersihan: string;
+}
+export interface ShipmentItem {
+  category_id: string;
+  product_id: string;
+  quantity: number;
+  unit: string;
+  expected_price: number;
+  condition: ProductCondition;
+  note?: string;
+  foto: string[];
+}
+interface ShipmentState {
+  shipmentHeader: ShipmentInput;
+
+  shipmentItems: ShipmentItem[];
+
+  setShipmentItems: (items: ShipmentItem[]) => void;
+
+  removeShipmentItem: (productId: string) => void;
+
+  updateShipmentHeader: (data: Partial<ShipmentInput>) => void;
+
+  resetShipment: () => void;
+}
+
+const initialHeaderProduk: ShipmentInput = {
+  asal: "",
+  tujuan: "",
+  delivery_method: "pickup",
+  status: "Draft",
+  jenis: "produk",
+};
+
+export const productShipment = create<ShipmentState>((set) => ({
+  shipmentHeader: initialHeaderProduk,
+
+  shipmentItems: [],
+
+  setShipmentItems: (items) =>
+    set({
+      shipmentItems: items,
+    }),
+
+  removeShipmentItem: (productId) =>
+    set((state) => ({
+      shipmentItems: state.shipmentItems.filter(
+        (item) => item.product_id !== productId,
+      ),
+    })),
+
+  updateShipmentHeader: (data) =>
+    set((state) => ({
+      shipmentHeader: {
+        ...state.shipmentHeader,
+        ...data,
+      },
+    })),
+
+  resetShipment: () =>
+    set({
+      shipmentHeader: initialHeaderProduk,
+      shipmentItems: [],
     }),
 }));

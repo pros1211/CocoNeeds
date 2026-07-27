@@ -34,14 +34,25 @@ const cardData = [
 ];
 const StatLahan = () => {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory pb-2 scrollbar-hide">
       {cardData.map((data, index) => (
         <div
           key={index}
-          className="flex flex-col gap-2 p-3 rounded-lg"
+          className="
+            shrink-0
+            snap-center
+
+            w-[170px]
+            sm:w-[190px]
+            lg:flex-1
+            lg:w-auto
+
+            rounded-2xl
+            p-4
+          "
           style={{ backgroundColor: data.color }}
         >
-          <div className="flex items-center gap-3">
+          <div className="flex flex-col items-start gap-4">
             <Image
               src={data.picture}
               width={55}

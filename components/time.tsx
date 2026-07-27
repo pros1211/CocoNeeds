@@ -18,9 +18,9 @@ export default function Time() {
     return () => clearInterval(interval);
   }, []);
   return (
-    <div className="flex items-center gap-2 bg-white p-2 rounded-xl shadow-sm text-gray-700 text-sm font-medium">
-      <Clock />
-      <span>{timeStr}</span>
+    <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-xl shadow-sm text-gray-700 text-sm font-medium">
+      <Clock className="w-4 h-4" />
+      <span className="text-sm">{timeStr}</span>
     </div>
   );
 }

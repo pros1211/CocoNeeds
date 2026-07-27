@@ -151,7 +151,6 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             Utuh
                           </span>
                         </div>
-                        {/* Magic Green Border that appears when selected */}
                         <div className="absolute inset-[-1px] border-2 border-transparent peer-checked:border-[#269957] rounded-xl pointer-events-none transition-all z-10"></div>
                       </label>
 
@@ -320,7 +319,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                     <div className="flex w-full border border-gray-200 shadow-sm rounded-xl ">
                       <label
                         className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
-                        title="Batok kelapa kering (Tidak mengandung air)"
+                        title="Batok kelapa sudah dibersihkan"
                       >
                         <input
                           type="radio"
@@ -343,7 +342,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                       </label>
                       <label
                         className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
-                        title="Batok kelapa basah (mengandung air)"
+                        title="Batok kelapa masih bercampur tanah/kotoran"
                       >
                         <input
                           type="radio"
@@ -366,7 +365,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                       </label>
                       <label
                         className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0 relative"
-                        title="Batok kelapa berjamur"
+                        title="Batok kelapa belum dibersihkan"
                       >
                         <input
                           type="radio"

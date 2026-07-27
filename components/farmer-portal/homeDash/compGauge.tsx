@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { PieChart, Pie, Label, Sector } from "recharts";
 import Image from "next/image";
 import type { PieSectorShapeProps } from "recharts/types/polar/Pie";
@@ -102,6 +102,16 @@ const CompGauge = () => {
   const [activeMonth, setMonth] = useState<keyof typeof monthlyData>("january");
   const activeData = monthlyData[activeMonth];
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   const renderPieShape = (props: PieSectorShapeProps) => {
     const { outerRadius = 0, innerRadius = 0, index } = props;
 
@@ -120,9 +130,11 @@ const CompGauge = () => {
 
     return <Sector {...props} outerRadius={outerRadius} />;
   };
+  const innerRadius = isMobile ? 55 : 75;
+  const outerRadius = isMobile ? 85 : 115;
   return (
-    <div className="w-full flex flex-col bg-[#F8F9FA] p-6 rounded-2xl min-h-[300px]">
-      <div className="flex justify-end mb-4 pr-4">
+    <div className="w-full flex flex-col bg-[#F8F9FA] p-3 md:p-6 rounded-2xl min-h-[300px]">
+      <div className="flex justify-center md:justify-end mb-4">
         <Select
           value={activeMonth}
           onValueChange={(val) => setMonth(val as keyof typeof monthlyData)}
@@ -141,9 +153,15 @@ const CompGauge = () => {
 
       <ChartContainer
         config={chartConfig}
-        className="w-full flex-1 min-h-[250px]"
+        className="relative w-full flex-1 w-full min-h-[380px] md:min-h-[250px]"
       >
-        <PieChart>
+        <PieChart
+          margin={
+            isMobile
+              ? { top: 0, right: 0, bottom: 20, left: 0 }
+              : { top: 20, right: 20, bottom: 20, left: 20 }
+          }
+        >
           <ChartTooltip
             cursor={false}
             content={<ChartTooltipContent hideLabel />}
@@ -152,20 +170,24 @@ const CompGauge = () => {
             content={
               <ChartLegendContent
                 nameKey="component"
-                className="flex-col items-start p-3 gap-3 text-sm font-medium [&_[style*='background-color']]:w-5 [&_[style*='background-color']]:h-5 [&_[style*='background-color']]:rounded-sm"
+                className={`p-3 gap-3 text-sm font-medium [&_[style*='background-color']]:w-4 [&_[style*='background-color']]:h-4 [&_[style*='background-color']]:rounded-sm ${
+                  isMobile
+                    ? "flex-wrap justify-center mt-6"
+                    : "flex-col items-start -translate-y-12"
+                }`}
               />
             }
-            layout="vertical"
-            verticalAlign="middle"
-            align="right"
+            layout={isMobile ? "horizontal" : "vertical"}
+            verticalAlign={isMobile ? "bottom" : "middle"}
+            align={isMobile ? "center" : "right"}
           />
           <Pie
             data={activeData}
             dataKey="number"
-            cx="40%"
-            cy="50%"
-            innerRadius={75}
-            outerRadius={115}
+            cx={isMobile ? "50%" : "60%"}
+            cy={isMobile ? "38%" : "35%"}
+            innerRadius={innerRadius}
+            outerRadius={outerRadius}
             strokeWidth={3}
             stroke="#ffffff"
             nameKey="component"
@@ -173,34 +195,15 @@ const CompGauge = () => {
             onClick={(_, index) =>
               setActiveIndex(activeIndex === index ? null : index)
             }
-          >
-            <Label
-              content={({ viewBox }) => {
-                if (viewBox && "cx" in viewBox && "cy" in viewBox) {
-                  const imageSize = 120;
-                  return (
-                    <g>
-                      <circle
-                        cx={viewBox.cx - 130}
-                        cy={viewBox.cy}
-                        r={imageSize / 2}
-                        fill="#f3f4f6"
-                      />
-                      <image
-                        href="/coconut.png"
-                        className="rounded-full"
-                        x={viewBox.cx - imageSize / 2 - 130}
-                        y={viewBox.cy - imageSize / 2}
-                        width={imageSize}
-                        height={imageSize}
-                      />
-                    </g>
-                  );
-                }
-              }}
-            />
-          </Pie>
+          ></Pie>
         </PieChart>
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-30 rounded-full bg-[#F3F4F6] shadow-sm flex items-center justify-center z-10">
+          <img
+            src="/coconut.png"
+            alt="Coconut"
+            className="w-20 h-20 md:w-28 md:h-28 object-contain"
+          />
+        </div>
       </ChartContainer>
     </div>
   );

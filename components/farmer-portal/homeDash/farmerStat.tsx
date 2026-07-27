@@ -36,8 +36,8 @@ const FarmerStat = () => {
           key={index}
           className="bg-white w-full h-full flex items-center flex-col gap-4 px-2 py-3 rounded-2xl shadow-sm border border-gray-50"
         >
-          <div className="flex items-center gap-4 justify-evenly w-full">
-            <div className="w-16 h-16 shrink-0 flex items-center justify-center">
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-3 md:gap-4 justify-evenly w-full">
+            <div className="w-12 h-12 md:w-16 md:h-16 shrink-0 flex items-center justify-center">
               <Image
                 src={data.picture}
                 width={120}
