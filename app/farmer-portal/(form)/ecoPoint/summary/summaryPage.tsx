@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Pencil, UserRound } from "lucide-react";
 import DataInformation from "@/components/farmer-portal/eco-points/dataInformation";
@@ -5,7 +6,6 @@ import DataKoperasi from "@/components/farmer-portal/eco-points/dataKoperasi";
 import WasteSummary from "@/components/farmer-portal/eco-points/wasteSummary";
 import PickupSummary from "@/components/farmer-portal/eco-points/pickupSummary";
 import ProgressPickup from "@/components/farmer-portal/eco-points/progressPickup";
-import { Progress } from "@base-ui/react";
 interface summaryProps {
   onNextStep?: () => void;
   onPrevStep?: () => void;

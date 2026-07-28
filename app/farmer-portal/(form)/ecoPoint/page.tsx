@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import WasteForm from "./create/page";
-import ShipmentPage from "./delivery/page";
-import SummaryPage from "./summary/page";
+import WasteForm from "./create/wasteForm";
+import ShipmentPage from "./delivery/shipmentPage";
+import SummaryPage from "./summary/summaryPage";
 const WasteData = () => {
   const [currentStep, setCurrentStep] = useState(1);
   return (
