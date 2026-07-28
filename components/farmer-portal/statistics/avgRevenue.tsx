@@ -24,42 +24,54 @@ const AvgRevenue = () => {
   const recentData = revenueData.slice(-4);
 
   return (
-    <Card className="flex flex-col p-3 gap-4 bg-white rounded-2xl shadow-md h-full w-full justify-between flex-1">
-      <CardHeader className="flex flex-row items-center gap-3 p-0 space-y-0">
-        <Coins className="w-6 h-6 text-[#F59E0B]" />
-        <CardTitle className="font-semibold text-md leading-tight tracking-wider text-gray-900">
-          Pendapatan / Kelapa
-        </CardTitle>
-      </CardHeader>
-
-      <CardContent className="p-0">
-        <div className="flex items-center justify-between w-full gap-2">
-          <div className="flex flex-col gap-2 items-start min-w-0">
-            <span className="text-xl font-bold text-gray-900 whitespace-nowrap">
-              Rp 1.500
-            </span>
-            <span className="flex items-center gap-1 text-[11px] font-medium text-white bg-[#F59E0B] px-2 py-1 rounded-md whitespace-nowrap">
-              <ArrowUpRight className="w-3 h-3" />
-              Naik Rp 100
-            </span>
+    <Card className="overflow-hidden rounded-2xl border border-gray-100 shadow-sm h-[220px]">
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center">
+            <Coins className="w-5 h-5 text-[#F59E0B]" />
           </div>
 
-          <div className="h-14 w-24 shrink-0">
-            <ChartContainer config={chartConfig} className="h-full w-full">
-              <AreaChart data={recentData}>
-                <Area
-                  type="monotone"
-                  dataKey="revenue"
-                  stroke="#F59E0B"
-                  fill="#F59E0B"
-                  strokeWidth={2}
-                  fillOpacity={0.2}
-                />
-              </AreaChart>
-            </ChartContainer>
+          <CardTitle className="text-base font-medium">
+            Pendapatan per Kelapa
+          </CardTitle>
+        </div>
+      </CardHeader>
+
+      <CardContent className="pt-0 flex flex-1 flex-col justify-between">
+        <div className="flex flex-col gap-2 items-start min-w-0">
+          <span className="text-xl font-bold text-gray-900 whitespace-nowrap">
+            Rp 1.500
+          </span>
+          <div className="flex items-center gap-3">
+            <div className="inline-flex items-center gap-1 rounded-full bg-orange-100 text-orange-700 px-3 py-1 text-sm font-semibold">
+              <ArrowUpRight className="w-4 h-4" />
+              <span className="text-xs">Naik Rp 100</span>
+            </div>
           </div>
         </div>
       </CardContent>
+      <div className="h-16 w-full shrink-0">
+        <ChartContainer config={chartConfig} className="h-full w-full">
+          <AreaChart
+            data={recentData}
+            margin={{
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+            }}
+          >
+            <Area
+              type="natural"
+              dataKey="revenue"
+              stroke="#F59E0B"
+              fill="#F59E0B"
+              strokeWidth={2}
+              fillOpacity={0.2}
+            />
+          </AreaChart>
+        </ChartContainer>
+      </div>
     </Card>
   );
 };

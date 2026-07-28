@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 const EcoMission = () => {
   return (
@@ -11,7 +12,12 @@ const EcoMission = () => {
             kerjakan misi dan dapatkan poinnya
           </span>
         </div>
-        <button className="text-[#609D7F] font-semibold">Lihat semua</button>
+        <Link
+          href="/farmer-portal/eco-points/tradeMission"
+          className="text-[#609D7F] font-semibold"
+        >
+          Lihat semua
+        </Link>
       </div>
       <div className="p-3 flex flex-col rounded-lg shadow-sm bg-[#F8F9FA]">
         <div className="border-b border-gray-400 py-2 flex items-center justify-between">

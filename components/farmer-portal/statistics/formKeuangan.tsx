@@ -86,7 +86,7 @@ const FormKeuangan = () => {
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger className="p-2 bg-[#3BA275] flex items-center gap-2 text-white rounded-2xl text-sm font-semibold">
+      <DialogTrigger className="p-2 bg-[#3BA275] flex items-center gap-2 text-white rounded-2xl text-xs md:text-sm font-semibold">
         <PlusCircle className="w-4 h-4" />
         Catat Keuangan
       </DialogTrigger>

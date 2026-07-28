@@ -22,38 +22,62 @@ const chartConfig = {
 const Cpm = () => {
   const recentData = costData.slice(-6);
   return (
-    <Card className="p-3 flex flex-col gap-3 w-full flex-1 gap-4 bg-white rounded-2xl shadow-md h-full">
-      <CardHeader className="flex items-center gap-2 p-0 space-y-0">
-        <Sprout className="w-5 h-5" />
-        <CardTitle className="text-md font-semibold">Biaya per Pohon</CardTitle>
-      </CardHeader>
-      <CardContent className="p-0">
-        <div className="flex items-center justify-between w-full">
-          <div className="flex flex-col gap-2 items-start">
-            <span className="text-xl font-bold whitespace-nowrap">
-              Rp. 14.200,00
-            </span>
-            <span className="flex items-center gap-2 whitespace-nowrap text-xs font-regular bg-[#269957]/70 text-white p-1 rounded-md">
-              <ArrowDown className="w-4 h-4" />
-              Rp.500 lebih hemat
-            </span>
+    <Card className="overflow-hidden rounded-2xl border border-gray-100 shadow-sm h-[220px]">
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center">
+            <Sprout className="w-5 h-5 text-[#269957]" />
           </div>
-          <div className="h-14 w-20 shrink-0">
-            <ChartContainer config={chartConfig} className="h-full w-full">
-              <AreaChart data={recentData}>
-                <Area
-                  type="monotone"
-                  dataKey="cost"
-                  stroke="var(--color-cost)"
-                  fill="var(--color-cost)"
-                  strokeWidth={2}
-                  fillOpacity={0.2}
-                />
-              </AreaChart>
-            </ChartContainer>
+
+          <CardTitle className="text-base font-medium">
+            Biaya per Pohon
+          </CardTitle>
+        </div>
+      </CardHeader>
+      <CardContent className="pt-0 flex flex-1 flex-col justify-between">
+        <div className="flex flex-col gap-3">
+          <span className="text-xl font-bold">Rp. 14.200,00</span>
+
+          <div className="flex items-center gap-3">
+            <div
+              className="inline-flex items-center gap-2
+                        rounded-full
+                        bg-green-100
+                        text-green-700
+                        px-3
+                        py-1
+                        text-sm
+                        font-medium"
+            >
+              <ArrowDown className="w-4 h-4" />
+              <span className="text-xs">Rp 500</span>
+              <span className="text-xs text-gray-500">lebih hemat</span>
+            </div>
           </div>
         </div>
       </CardContent>
+      <div className="h-16 w-full shrink-0">
+        <ChartContainer config={chartConfig} className="h-full w-full">
+          <AreaChart
+            data={recentData}
+            margin={{
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+            }}
+          >
+            <Area
+              type="natural"
+              dataKey="cost"
+              stroke="var(--color-cost)"
+              fill="var(--color-cost)"
+              strokeWidth={2}
+              fillOpacity={0.2}
+            />
+          </AreaChart>
+        </ChartContainer>
+      </div>
     </Card>
   );
 };

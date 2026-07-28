@@ -18,7 +18,7 @@ const ListLahan = async () => {
 
   const lahan = lahanData || [];
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col lg:p-4">
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-xl font-bold text-gray-800">Manajemen Lahan</h2>
         <FormLahan />

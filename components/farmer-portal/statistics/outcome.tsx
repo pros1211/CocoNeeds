@@ -2,45 +2,55 @@ import React from "react";
 import { BanknoteArrowDown, TrendingUp, TrendingDown } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getFinancialData } from "@/app/action";
-import { formatRupiah } from "@/lib/utils";
+import { cn, formatRupiah } from "@/lib/utils";
 import OutcomeBarChart from "./outcomeBarChart";
 const Outcome = async () => {
-  const { pengeluaran, selisihPengeluaran, outcomeChartData } =
-    await getFinancialData();
-  const pengeluaranSafe = selisihPengeluaran || 0;
-  const isPositive = pengeluaranSafe > 0;
+  const { pengeluaran, outcome, outcomeChartData } = await getFinancialData();
+  const isSaving = outcome.difference < 0;
   return (
-    <Card className="flex flex-col p-3 gap-4 bg-white rounded-2xl shadow-md">
-      <CardHeader className="flex items-center gap-4">
-        <BanknoteArrowDown className="w-7 h-7" />
-        <CardTitle className="font-regular text-lg tracking-wider">
-          Pengeluaran Operasional
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center justify-between w-full">
-          <div className="flex flex-col gap-2 items-start">
-            <span className="text-xl font-semibold ">
-              {formatRupiah(pengeluaran)}
-            </span>
-            <div
-              className={`flex items-center gap-2 p-2 rounded-xl text-white ${isPositive ? "bg-[#F6673A]" : "bg-[#3BA275]"}`}
-            >
-              <span className="text-white font-medium text-xs">
-                Rp. {Math.abs(pengeluaranSafe)}
-                {isPositive ? " lebih banyak " : " lebih sedikit "}dari bulan
-                lalu
-              </span>
-            </div>
+    <Card className="relative h-[220px] overflow-hidden rounded-2xl border border-gray-100 shadow-sm flex flex-col shadow-sm hover:shadow-md transition-shadow">
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-orange-50">
+            <BanknoteArrowDown className="h-5 w-5 text-[#F6673A]" />
           </div>
-          <div className="h-22 w-32 shrink-0">
-            <OutcomeBarChart
-              data={outcomeChartData || []}
-              isPositive={isPositive}
-            />
+
+          <CardTitle className="text-base font-medium leading-tight">
+            Pengeluaran Operasional
+          </CardTitle>
+        </div>
+      </CardHeader>
+      <CardContent className="pt-0 flex-1 flex flex-col justify-between">
+        <div className="flex flex-col gap-2">
+          <span className="text-xl font-bold leading-none">
+            {formatRupiah(Math.abs(pengeluaran))}
+          </span>
+
+          <div className="flex items-center gap-3">
+            <div
+              className={cn(
+                "inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold",
+                isSaving
+                  ? "bg-green-100 text-green-700"
+                  : "bg-orange-100 text-orange-700",
+              )}
+            >
+              {isSaving ? (
+                <TrendingDown className="h-4 w-4" />
+              ) : (
+                <TrendingUp className="h-4 w-4" />
+              )}
+              {Math.abs(outcome.percentage).toFixed(1)}%
+            </div>
+            <span className="text-xs text-gray-500">
+              {formatRupiah(Math.abs(outcome.difference))} lebih hemat
+            </span>
           </div>
         </div>
       </CardContent>
+      {/* <div className="absolute translate-y-35 h-16 w-full ">
+        <OutcomeBarChart data={outcomeChartData ?? []} isPositive={!isSaving} />
+      </div> */}
     </Card>
   );
 };

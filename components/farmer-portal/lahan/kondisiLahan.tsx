@@ -42,10 +42,10 @@ const KondisiLahan = () => {
   return (
     <Card className="w-full rounded-2xl border shadow-sm bg-white">
       <CardHeader className=" flex flex-row items-center justify-between pb-4">
-        <CardTitle className="text-sm lg:text-md">Kondisi Lahan</CardTitle>
+        <CardTitle className="text-sm lg:text-lg">Kondisi Lahan</CardTitle>
         <Link
           href="/farmer-portal/"
-          className="font-semibold text-sm lg:text-md text-[#609D7F]"
+          className="font-semibold text-sm lg:text-lg text-[#609D7F]"
         >
           Lihat Semua
         </Link>

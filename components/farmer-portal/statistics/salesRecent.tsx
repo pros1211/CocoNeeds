@@ -101,7 +101,7 @@ const SalesRecent = () => {
         </Link>
       </CardHeader>
       <CardContent className="p-0">
-        <ScrollArea className="h-[230px] w-full pr-4">
+        <ScrollArea className="h-full w-full pr-4">
           <Table>
             <TableHeader className="bg-gray-50/50 sticky top-0 z-10">
               <TableRow className="border-none hover:bg-transparent">

@@ -60,8 +60,8 @@ const SpendingBreak = () => {
           Kategori Pengeluaran
         </h2>
 
-        <div className="flex items-center justify-between w-full">
-          <div className="flex flex-col gap-2.5">
+        <div className=" flex flex-col lg:flex-row items-center lg:items-start gap-6">
+          <div className=" grid grid-cols-2 gap-y-3 gap-x-4 sm:grid-cols-3 lg:flex lg:flex-col">
             {chartData.map((item) => (
               <div key={item.category} className="flex items-center gap-3">
                 <span
@@ -79,7 +79,7 @@ const SpendingBreak = () => {
             ))}
           </div>
 
-          <div className="w-[400px] h-[250px] shrink-0">
+          <div className=" w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[380px] aspect-square shrink-0">
             <ChartContainer config={chartConfig} className="h-full w-full">
               <PieChart>
                 <Pie
@@ -112,7 +112,7 @@ const SpendingBreak = () => {
                             <tspan
                               x={viewBox.cx}
                               y={viewBox.cy + 12}
-                              className="fill-gray-900 text-lg font-bold"
+                              className="fill-gray-900 text-sm sm:text-base lg:text-lg font-bold"
                             >
                               Rp {totalPengeluaran.toLocaleString("id-ID")}
                             </tspan>

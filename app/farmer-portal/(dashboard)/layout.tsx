@@ -30,7 +30,7 @@ export default function FarmerPortalLayout({
             </button>
           </div>
         </header>
-        <main className="flex-1 overflow-y-auto">{children}</main>
+        <main className="flex-1 overflow-y-auto pb-28 md:pb-0">{children}</main>
       </div>
     </div>
   );

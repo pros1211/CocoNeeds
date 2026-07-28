@@ -19,7 +19,6 @@ const ClientLahan = async ({ taskComponent }: LahanProps) => {
   const lahanOptions = lahanData || [];
   return (
     <div className="bg-[#F8F9FA] min-h-screen p-4 lg:p-6">
-      {/* HEADER */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-5">
         <div>
           <h1 className="text-3xl font-bold">Lahan</h1>
@@ -31,9 +30,7 @@ const ClientLahan = async ({ taskComponent }: LahanProps) => {
         <LaporanLahan lahanList={lahanOptions} />
       </div>
 
-      {/* DESKTOP */}
       <div className="hidden lg:grid lg:grid-cols-6 gap-5 h-[760px]">
-        {/* LEFT */}
         <div className="col-span-4 flex flex-col gap-5 min-h-0">
           <StatLahan />
 
@@ -42,7 +39,6 @@ const ClientLahan = async ({ taskComponent }: LahanProps) => {
           </div>
         </div>
 
-        {/* RIGHT */}
         <div className="col-span-2 flex flex-col gap-5 min-h-0">
           <KondisiLahan />
 
@@ -50,7 +46,6 @@ const ClientLahan = async ({ taskComponent }: LahanProps) => {
         </div>
       </div>
 
-      {/* MOBILE */}
       <div className="flex flex-col gap-5 lg:hidden">
         <StatLahan />
 

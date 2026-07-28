@@ -37,7 +37,7 @@ const FarmerNav = () => {
   const pathname = usePathname();
   return (
     <div className="">
-      <nav className="hidden md:w-24 min-h-screen bg-[#F8F9FA] border-r border-gray-200 md:flex md:flex-col md:items-center md:py-2 md:px-3 md:gap-6 shrink-0">
+      <nav className="hidden xl:w-24 min-h-screen bg-[#F8F9FA] border-r border-gray-200 md:flex md:flex-col md:items-center md:py-2 md:px-3 md:gap-6 shrink-0">
         <Image
           src="/cocoLogo.jpg"
           width={70}
