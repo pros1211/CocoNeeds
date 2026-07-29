@@ -3,6 +3,9 @@ import React from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { LayoutGrid, Gift, History } from "lucide-react";
+import DailyMission from "./mission/dailyMission";
+import MonthlyMission from "./mission/monthlyMission";
+import Reward from "./reward/reward";
 const EcoTabs = () => {
   return (
     <Tabs defaultValue="mission" className="p-5">
@@ -29,7 +32,15 @@ const EcoTabs = () => {
           <span>History</span>
         </TabsTrigger>
       </TabsList>
-      <TabsContent></TabsContent>
+      <TabsContent value="mission">
+        <div className="flex flex-col gap-6">
+          <DailyMission />
+          <MonthlyMission />
+        </div>
+      </TabsContent>
+      <TabsContent value="reward">
+        <Reward />
+      </TabsContent>
     </Tabs>
   );
 };

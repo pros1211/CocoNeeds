@@ -7,98 +7,158 @@ import {
   Info,
 } from "lucide-react";
 import { TbCoin } from "react-icons/tb";
+
 const steps = [
   {
     id: 1,
-    title: "Pengajuan penukaran",
-    description: "Permintaan penukaran diterima",
+    title: "Pengajuan Penukaran",
+    description: "Permintaan penukaran diterima.",
     icon: Calendar,
     status: "active",
   },
   {
     id: 2,
-    title: "Koperasi memproses",
+    title: "Koperasi Memproses",
     description: "Koperasi menerima permintaan.",
     icon: Warehouse,
     status: "pending",
   },
   {
     id: 3,
-    title: "Penjadwalan penjemputan",
-    description: "Penjemputan limbah dijadwalkan",
+    title: "Penjadwalan",
+    description: "Penjemputan limbah dijadwalkan.",
     icon: CalendarClock,
     status: "pending",
   },
   {
     id: 4,
-    title: "Verifikasi data limbah",
-    description: "tunjukkan gambar QR ke penjemput.",
+    title: "Verifikasi",
+    description: "Petugas memverifikasi limbah.",
     icon: ShieldCheck,
     status: "pending",
   },
   {
     id: 5,
-    title: "Ecopoint dikirimkan",
-    description: "Ecopoint akan dikirim ke akunmu.",
+    title: "EcoPoint Dikirim",
+    description: "EcoPoint akan masuk ke akun.",
     icon: TbCoin,
     status: "pending",
   },
 ];
+
 const ProgressPickup = () => {
   return (
-    <div className="flex flex-col gap-4 bg-white shadow-sm rounded-xl p-5">
-      <div className="flex flex-col gap-2">
-        <h2 className="font-semibold text-lg">Proses Penukaran limbah</h2>
-        <span className="font-medium text-sm text-gray-600">
-          Lihat proses penukaran anda disini
-        </span>
+    <div className="rounded-2xl bg-white shadow-sm p-5 space-y-8">
+      <div>
+        <h2 className="text-xl font-bold">Proses Penukaran Limbah</h2>
+
+        <p className="text-sm text-gray-500 mt-1">
+          Lihat proses penukaran limbah anda disini.
+        </p>
       </div>
-      <div className="flex justify-between items-start relative w-full px-2">
-        <div className="absolute top-6 left-[10%] right-[10%] border-t-[2px] border-dashed border-gray-200 z-0"></div>
+
+      <div className="hidden lg:flex relative justify-between">
+        <div className="absolute top-6 left-16 right-16 border-t-2 border-dashed border-gray-300" />
+
         {steps.map((step) => {
-          const isActive =
+          const Active =
             step.status === "active" || step.status === "completed";
 
           return (
             <div
               key={step.id}
-              className="flex flex-col items-center gap-4 z-10 w-[90px] md:w-[120px]"
+              className="relative z-10 flex-1 flex flex-col items-center"
             >
               <div
-                className={`w-12 h-12 rounded-full flex items-center justify-center border-2 transition-colors duration-300 ${
-                  isActive
+                className={`w-12 h-12 rounded-full border-2 flex items-center justify-center
+                ${
+                  Active
                     ? "bg-[#006C48] border-[#006C48] text-white"
-                    : "bg-white border-gray-200 text-gray-500"
-                }`}
+                    : "bg-white border-gray-300 text-gray-500"
+                }
+                `}
               >
                 <step.icon className="w-5 h-5" />
               </div>
 
-              <div className="text-center flex flex-col gap-1.5">
-                <h4 className="font-bold text-sm text-gray-900 leading-tight">
-                  {step.title}
-                </h4>
-                <p className="text-xs text-gray-500 leading-snug hidden md:block">
-                  {step.description}
-                </p>
+              <h4 className="mt-4 font-semibold text-center text-xs">
+                {step.title}
+              </h4>
+
+              <p className="mt-1 text-xs text-center text-gray-500">
+                {step.description}
+              </p>
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="flex lg:hidden flex-col">
+        {steps.map((step, index) => {
+          const Active =
+            step.status === "active" || step.status === "completed";
+
+          return (
+            <div key={step.id} className="flex gap-4">
+              {/* Left */}
+
+              <div className="flex flex-col items-center">
+                <div
+                  className={`
+
+                  w-10
+                  h-10
+                  rounded-full
+                  border-2
+                  flex
+                  items-center
+                  justify-center
+
+                  ${
+                    Active
+                      ? "bg-[#006C48] border-[#006C48] text-white"
+                      : "bg-white border-gray-300 text-gray-500"
+                  }
+
+                  `}
+                >
+                  <step.icon className="w-5 h-5" />
+                </div>
+
+                {index !== steps.length - 1 && (
+                  <div className="w-[2px] flex-1 bg-gray-300 my-2" />
+                )}
+              </div>
+
+              <div className="pb-8">
+                <h4 className="font-semibold">{step.title}</h4>
+
+                <p className="text-sm text-gray-500 mt-1">{step.description}</p>
               </div>
             </div>
           );
         })}
       </div>
-      <div className="flex flex-col gap-2 p-2 bg-[#E8F5E9] rounded-lg ">
-        <div className="flex items-center gap-2">
-          <Info className="w-10 h-10 text-[#E8F5E9]" fill="#269957" />
-          <span className="text-md font-semibold">Informasi Tambahan</span>
-        </div>
-        <div className="flex flex-col gap-1 ml-5 text-sm">
-          <p className="text-sm text-gray-500 font-medium">
-            Penjemputan akan dijadwalkan paling lambat 1x24 jam setelah
-            dikonfirmasi oleh koperasi tujuan.
-          </p>
-          <p>
-            Anda akan menerima notifikasi ketika penjemputan sudah dijadwalkan.
-          </p>
+
+      <div className="rounded-xl bg-[#E8F5E9] px-3 py-4">
+        <div className="flex items-start gap-3">
+          <div className="w-10 h-10 rounded-full bg-[#269957] flex items-center justify-center shrink-0">
+            <Info className="w-5 h-5 text-white" />
+          </div>
+
+          <div>
+            <h3 className="font-semibold">Informasi Tambahan</h3>
+
+            <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+              Penjemputan akan dijadwalkan maksimal 1×24 jam setelah koperasi
+              menerima permintaan.
+            </p>
+
+            <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+              Anda akan menerima notifikasi ketika jadwal penjemputan telah
+              tersedia.
+            </p>
+          </div>
         </div>
       </div>
     </div>

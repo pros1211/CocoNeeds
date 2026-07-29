@@ -59,7 +59,7 @@ const WasteForm = ({ onNextStep }: WasteFormProps) => {
   };
   return (
     <div className="flex flex-col gap-4 bg-white p-6 rounded-xl w-full">
-      <div className=" flex justify-between items-end border-b border-gray-200 pb-4">
+      <div className=" flex sm:flex-row sm:justify-between sm:items-end border-b border-gray-200 pb-4">
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
             Langkah 1: Isi data Limbah
@@ -68,12 +68,9 @@ const WasteForm = ({ onNextStep }: WasteFormProps) => {
             Pilih limbah kelapa yang ingin anda tukarkan.
           </p>
         </div>
-        <span className="text-sm font-semibold text-gray-500">
-          Langkah 1 dari 3
-        </span>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-        <div className="lg:col-span-4 flex flex-col gap-4">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-10 items-start">
+        <div className="xl:col-span-4 flex flex-col gap-4">
           <h2 className="font-semibold text-lg text-gray-800">
             Pilihan Limbah
           </h2>
@@ -85,14 +82,14 @@ const WasteForm = ({ onNextStep }: WasteFormProps) => {
                 <Card
                   key={index}
                   onClick={() => toggleCard(index)}
-                  className={`relative flex flex-col gap-2 ${isSelected ? "bg-[#EEF8F3]/70 border border-[#75DAA8]" : "bg-white border-gray-300"}`}
+                  className={`relative w-full transition-all flex flex-col gap-2 ${isSelected ? "bg-[#EEF8F3]/70 border border-[#75DAA8]" : "bg-white border-gray-300"}`}
                 >
                   {isSelected && (
                     <div className="absolute top-4 right-4 bg-white rounded-full">
                       <CheckCircle2 className="w-6 h-6 text-[#1F4D36] fill-[#1F4D36] stroke-white" />
                     </div>
                   )}
-                  <CardHeader>
+                  <CardHeader className="p-3">
                     <CardTitle className="font-semibold text-lg">
                       {data.title}
                     </CardTitle>
@@ -109,8 +106,8 @@ const WasteForm = ({ onNextStep }: WasteFormProps) => {
           </div>
           {/* shipment summary */}
         </div>
-        <div className="lg:col-span-8 flex flex-col ">
-          <div className="flex items-center ml-6 justify-between">
+        <div className="lg:col-span-8 flex flex-col">
+          <div className="flex items-center mb-3 xl:ml-6 justify-between">
             <h2 className="font-semibold text-lg text-gray-800">
               Informasi Limbah ({currentStepIndex + 1} dari{" "}
               {sortedSelectedCards.length})
@@ -149,7 +146,7 @@ const WasteForm = ({ onNextStep }: WasteFormProps) => {
                 />
               )}
           </div>
-          <div className="flex justify-end gap-10 mt-8 ml-6 border-t border-gray-100 pt-6 pr-4">
+          <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end gap-10 border-t border-gray-100 pt-6 pr-4">
             {currentStepIndex > 0 && (
               <button
                 type="button"

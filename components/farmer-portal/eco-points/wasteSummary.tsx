@@ -18,7 +18,7 @@ const summaryData = [
     notes: "Clean and sorted shell pieces",
     photos: ["/placeholder1.jpg", "/placeholder2.jpg", "/placeholder3.jpg"],
     extraPhotos: 2,
-    icon: <Target className="w-5 h-5 text-[#269957]" />,
+    icon: <Target className="w-4 h-4 lg:w-5 lg:h-5 text-[#269957]" />,
     thumbnail: "https://placehold.co/100x100/8B5A2B/FFF?text=Shell",
   },
   {
@@ -26,7 +26,7 @@ const summaryData = [
     name: "Coconut Husk",
     weight: 20,
     points: 300,
-    icon: <Leaf className="w-5 h-5 text-[#269957]" />,
+    icon: <Leaf className="w-4 h-4 lg:w-5 lg:h-5 text-[#269957]" />,
     thumbnail: "https://placehold.co/100x100/D2B48C/FFF?text=Husk",
   },
   {
@@ -34,7 +34,7 @@ const summaryData = [
     name: "Coconut Water",
     weight: 15,
     points: 120,
-    icon: <Droplet className="w-5 h-5 text-[#269957]" />,
+    icon: <Droplet className="w-4 h-4 lg:w-5 lg:h-5 text-[#269957]" />,
     thumbnail: "https://placehold.co/100x100/98FB98/FFF?text=Water",
   },
 ];
@@ -56,43 +56,81 @@ const WasteSummary = () => {
             value={item.id}
             className="border border-gray-200 rounded-2xl bg-white overflow-hidden transition-all data-[state=open]:border-[#269957] data-[state=open]:bg-[#F4FBF7] px-4"
           >
-            <AccordionTrigger className="hover:no-underline py-4">
-              <div className="flex w-full items-center justify-between pr-4">
-                {/* Left: Image & Name */}
-                <div className="flex items-center gap-4 w-1/3">
+            <AccordionTrigger className="hover:no-underline px-0 py-4">
+              {/* ================= MOBILE ================= */}
+
+              <div className="flex lg:hidden w-full flex-col gap-4">
+                <div className="flex items-center gap-2">
                   <img
                     src={item.thumbnail}
                     alt={item.name}
-                    className="w-14 h-14 rounded-xl object-cover border border-gray-200"
+                    className="w-10 h-10 rounded-xl object-cover border"
                   />
-                  <div className="flex items-center gap-3">
-                    <div className="bg-white p-2 rounded-full shadow-sm border border-gray-100">
-                      {item.icon}
+
+                  <div className="flex-1">
+                    <h3 className="font-bold text-md">{item.name}</h3>
+
+                    <div className="flex items-center gap-2 mt-2">
+                      <div className="bg-white rounded-full p-1 shadow border">
+                        {item.icon}
+                      </div>
+
+                      <span className="text-md text-gray-500">
+                        Jenis limbah
+                      </span>
                     </div>
-                    <span className="font-bold text-gray-900 text-lg">
-                      {item.name}
-                    </span>
                   </div>
                 </div>
 
-                {/* Middle: Weight */}
-                <div className="flex flex-col items-center w-1/3">
-                  <span className="text-xs font-semibold text-gray-500">
-                    Total Weight
-                  </span>
-                  <span className="font-bold text-gray-900 text-lg">
-                    {item.weight} kg
-                  </span>
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="rounded-xl bg-gray-50 p-2">
+                    <p className="text-xs text-gray-500">Berat total</p>
+
+                    <h4 className="font-bold text-lg">{item.weight} kg</h4>
+                  </div>
+
+                  <div className="rounded-xl bg-green-50 p-2">
+                    <p className="text-xs text-gray-500">EcoPoints</p>
+
+                    <h4 className="font-bold text-lg text-[#269957]">
+                      {item.points} pts
+                    </h4>
+                  </div>
+                </div>
+              </div>
+
+              {/* ================= DESKTOP ================= */}
+
+              <div className="hidden lg:flex w-full items-center justify-between pr-4">
+                <div className="flex items-center gap-5 w-[40%]">
+                  <img
+                    src={item.thumbnail}
+                    className="w-16 h-16 rounded-2xl border"
+                  />
+
+                  <div className="flex items-center gap-4">
+                    <div className="bg-white rounded-full p-3 shadow border">
+                      {item.icon}
+                    </div>
+
+                    <h3 className="font-bold text-xl">{item.name}</h3>
+                  </div>
                 </div>
 
-                {/* Right: EcoPoints */}
-                <div className="flex flex-col items-end w-1/3 text-right">
-                  <span className="text-xs font-semibold text-gray-500">
+                <div className="text-center">
+                  <p className="text-gray-500 font-semibold">Total Weight</p>
+
+                  <h2 className="text-xl font-bold">{item.weight} kg</h2>
+                </div>
+
+                <div className="text-right">
+                  <p className="text-gray-500 font-semibold">
                     Estimated EcoPoints
-                  </span>
-                  <span className="font-bold text-[#269957] text-lg">
+                  </p>
+
+                  <h2 className="text-xl font-bold text-[#269957]">
                     {item.points} pts
-                  </span>
+                  </h2>
                 </div>
               </div>
             </AccordionTrigger>

@@ -69,11 +69,11 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
     onSuccess();
   };
   return (
-    <div className="p-5 bg-white flex flex-col">
-      <Card className="px-3 py-5">
+    <div className="lg:p-5 bg-white flex flex-col">
+      <Card className="px-1 lg:px-3 py-5">
         <CardHeader className="border-b border-gray-300 flex items-center gap-2">
           <span className="text-2xl">{data.icon}</span>
-          <CardTitle className="text-xl font-semibold">
+          <CardTitle className="text-md lg:text-xl font-semibold">
             Data Tempurung kelapa
           </CardTitle>
         </CardHeader>
@@ -129,7 +129,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                     <FieldLabel className="font-medium text-gray-700">
                       Bentuk Tempurung
                     </FieldLabel>
-                    <div className="flex w-full border border-gray-200 rounded-xl bg-white shadow-sm relative">
+                    <div className="grid grid-cols-3 overflow-hidden w-full border border-gray-200 rounded-xl bg-white shadow-sm relative">
                       <label
                         className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0 "
                         title="Batok kelapa utuh yang belum dipecah atau dihancurkan"
@@ -146,7 +146,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Utuh" ? "text-[#269957] fill-[#269957]/20" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Utuh" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Utuh" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Utuh
                           </span>
@@ -171,7 +171,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Pecahan" ? "text-[#269957] fill-[#269957]/20" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Pecahan" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Pecahan" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Pecahan
                           </span>
@@ -197,7 +197,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Briket" ? "text-[#269957] fill-[#269957]/20" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Briket" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Briket" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Briket / Arang
                           </span>
@@ -226,9 +226,9 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                     <FieldLabel className="font-medium text-gray-700">
                       Kondisi Kelembapan
                     </FieldLabel>
-                    <div className="flex w-full border border-gray-200 rounded-xl shadow-sm relative">
+                    <div className="grid grid-cols-3 w-full border border-gray-200 rounded-xl shadow-sm relative">
                       <label
-                        className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
+                        className=" relative cursor-pointer group border-r border-gray-200 last:border-r-0"
                         title="Batok kelapa kering (Tidak mengandung air)"
                       >
                         <input
@@ -243,7 +243,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Kering" ? "text-[#269957] fill-[#269957]/20" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Kering" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Kering" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Kering
                           </span>
@@ -251,7 +251,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                         <div className="absolute inset-[-1px] border-2 border-transparent peer-checked:border-[#269957] rounded-xl pointer-events-none transition-all z-10"></div>
                       </label>
                       <label
-                        className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
+                        className=" relative cursor-pointer group border-r border-gray-200 last:border-r-0"
                         title="Batok kelapa basah (mengandung air)"
                       >
                         <input
@@ -266,7 +266,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Basah" ? "text-[#269957] fill-[#269957]/20" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Basah" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Basah" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Basah
                           </span>
@@ -274,7 +274,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                         <div className="absolute inset-[-1px] border-2 border-transparent peer-checked:border-[#269957] rounded-xl pointer-events-none transition-all z-10"></div>
                       </label>
                       <label
-                        className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
+                        className="relative cursor-pointer group border-r border-gray-200 last:border-r-0"
                         title="Batok kelapa berjamur"
                       >
                         <input
@@ -289,7 +289,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Berjamur" ? "text-[#269957] fill-[#269957]/80" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Berjamur" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Berjamur" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Berjamur
                           </span>
@@ -316,9 +316,9 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                     <FieldLabel className="font-medium text-gray-700">
                       Kondisi kebersihan
                     </FieldLabel>
-                    <div className="flex w-full border border-gray-200 shadow-sm rounded-xl ">
+                    <div className="grid grid-cols-3 w-full border border-gray-200 shadow-sm rounded-xl ">
                       <label
-                        className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
+                        className="relative cursor-pointer group border-r border-gray-200 last:border-r-0"
                         title="Batok kelapa sudah dibersihkan"
                       >
                         <input
@@ -333,7 +333,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Bersih" ? "text-[#269957] fill-[#269957]/80" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Bersih" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Bersih" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Bersih
                           </span>
@@ -341,7 +341,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                         <div className="absolute inset-[-1px] border-2 border-transparent peer-checked:border-[#269957] rounded-xl pointer-events-none transition-all z-10"></div>
                       </label>
                       <label
-                        className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0"
+                        className="relative cursor-pointer group border-r text-center border-gray-200 last:border-r-0"
                         title="Batok kelapa masih bercampur tanah/kotoran"
                       >
                         <input
@@ -356,7 +356,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Sedikit Kotor" ? "text-[#269957] fill-[#269957]/20" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Sedikit Kotor" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Sedikit Kotor" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Sedikit Kotor
                           </span>
@@ -364,7 +364,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                         <div className="absolute inset-[-1px] border-2 border-transparent peer-checked:border-[#269957] rounded-xl pointer-events-none transition-all z-10"></div>
                       </label>
                       <label
-                        className="flex-1 relative cursor-pointer group border-r border-gray-200 last:border-r-0 relative"
+                        className="relative cursor-pointer group border-r border-gray-200 last:border-r-0 relative"
                         title="Batok kelapa belum dibersihkan"
                       >
                         <input
@@ -379,7 +379,7 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                             className={`w-5 h-5 ${field.value === "Kotor" ? "text-[#269957] fill-[#269957]/80" : "text-gray-500"}`}
                           />
                           <span
-                            className={`text-sm ${field.value === "Kotor" ? "font-bold" : "font-medium text-gray-600"}`}
+                            className={`text-xs lg:text-sm ${field.value === "Kotor" ? "font-bold" : "font-medium text-gray-600"}`}
                           >
                             Kotor
                           </span>
@@ -400,7 +400,6 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                 name="foto_url"
                 control={form.control}
                 render={({ field, fieldState }) => {
-                  // Helper function to handle file selection
                   const handleImageUpload = (
                     e: React.ChangeEvent<HTMLInputElement>,
                   ) => {
@@ -421,7 +420,6 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                     field.onChange(updatedPhotos);
                   };
 
-                  // Helper to remove an image
                   const removeImage = (indexToRemove: number) => {
                     const currentPhotos = field.value || [];
                     const updatedPhotos = currentPhotos.filter(
@@ -446,12 +444,12 @@ const TempurungForm = ({ data, isLastStep, onSuccess }: Props) => {
                           onChange={handleImageUpload}
                         />
 
-                        <Camera className="w-10 h-10 text-gray-400 group-hover:text-[#269957] transition-colors" />
+                        <Camera className="w-6 h-6 lg:w-10 lg:h-10 text-gray-400 group-hover:text-[#269957] transition-colors" />
                         <div className="text-center pointer-events-none">
-                          <p className="text-base font-bold text-gray-800">
+                          <p className="text-sm xl:text-base font-bold text-gray-800">
                             Ambil Foto atau Pilih Galeri
                           </p>
-                          <p className="text-sm text-gray-500 mt-1">
+                          <p className="text-xs lg:text-sm text-gray-500 mt-1">
                             Format JPG, PNG, atau HEIC
                           </p>
                         </div>

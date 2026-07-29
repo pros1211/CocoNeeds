@@ -120,11 +120,11 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
       onNextStep();
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      router.push("/farmer-portal/pengiriman/create/review");
+      router.push("/farmer-portal/ecoPoint/summary");
     }
   };
   return (
-    <div className="flex flex-col min-h-screen  gap-5 bg-[#F8F9FA] p-5 w-full bg-white rounded-xl ">
+    <div className="flex flex-col h-full gap-5 bg-[#F8F9FA] p-5 w-full bg-white rounded-xl ">
       <div className="flex justify-between items-end border-b border-gray-200 pb-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">
@@ -134,12 +134,9 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
             Pilih lokasi koperasi terdekat untuk penjemputan.
           </p>
         </div>
-        <span className="text-sm font-semibold text-gray-500">
-          Langkah 2 dari 3
-        </span>
       </div>
-      <div className="h-[500px] grid grid-cols-1 lg:grid-cols-12 gap-6">
-        <div className="lg:col-span-5 flex flex-col gap-4">
+      <div className="xl:h-[500px] grid grid-cols-1 xl:grid-cols-12 gap-6">
+        <div className="lg:col-span-5 h-[280px] sm:h-[350px] lg:h-[450px] flex flex-col gap-4">
           <div className="relative h-full w-full rounded-xl bg-white p-2 shadow-sm border border-gray-200 relative z-0">
             <MapComponent
               koperasiData={filteredKoperasi}
@@ -148,7 +145,7 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
           </div>
         </div>
         {/* right column for select koperasi */}
-        <div className="lg:col-span-7 h-full flex flex-col bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden">
+        <div className="lg:col-span-7 max-h-[650px] lg:h-full flex flex-col bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden">
           {/* Filters */}
           <div className="grid grid-cols-3 gap-3 pb-6 border-b border-gray-100">
             {/* Kabupaten */}
@@ -222,7 +219,7 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
           </div>
 
           {/* Scrollable List */}
-          <div className="flex-1 min-h-0 overflow-y-auto h-[600px] mt-4 pr-2 flex flex-col gap-3 custom-scrollbar">
+          <div className="xl:flex-1 min-h-0 overflow-y-auto mt-4 pr-2 flex flex-col gap-3 custom-scrollbar">
             {filteredKoperasi.length === 0 ? (
               <p className="text-gray-500 text-center mt-10">
                 Tidak ada koperasi ditemukan di area ini.
@@ -289,7 +286,7 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
                 <p className="text-xs font-semibold text-gray-500 mb-0.5">
                   Alamat
                 </p>
-                <p className="text-sm text-gray-800 leading-snug">
+                <p className="text-xs lg:text-sm text-gray-800 leading-snug">
                   {selectedKoperasi.alamat}, {selectedKoperasi.desa}, Kec.{" "}
                   {selectedKoperasi.kecamatan}
                 </p>
@@ -308,7 +305,7 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
             </div>
             <div className="grid grid-cols-[24px_1fr] gap-3 items-center">
               <Clock className="w-5 h-5 text-[#269957]" />
-              <div className="flex justify-between items-center w-full">
+              <div className="flex lg:flex-row justify-between items-center w-full">
                 <div>
                   <p className="text-xs font-semibold text-gray-500 mb-0.5">
                     Operating Hours
@@ -317,10 +314,6 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
                     {selectedKoperasi.jam_operasional || "08:00 - 16:00 WIB"}
                   </p>
                 </div>
-                <button className="flex items-center gap-2 border border-gray-300 text-gray-700 bg-white hover:bg-gray-50 px-3 py-1.5 rounded-lg text-sm font-semibold transition-colors">
-                  <ExternalLink className="w-4 h-4" />
-                  Buka Di Google Maps
-                </button>
               </div>
             </div>
           </div>
@@ -344,13 +337,13 @@ const ShipmentPage = ({ onPrevStep, onNextStep }: ShipmentPageProps) => {
                 router.back();
               }
             }}
-            className="bg-white border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-bold hover:bg-gray-50 transition-colors shadow-sm"
+            className="bg-white text-sm lg:text-lg border border-gray-300 text-gray-700 px-8 py-3 rounded-xl font-bold hover:bg-gray-50 transition-colors shadow-sm"
           >
             Kembali
           </button>
           <button
             onClick={handleNext}
-            className={`px-8 py-3 rounded-xl font-bold transition-colors shadow-sm ${
+            className={`text-sm lg:text-lg px-8 py-3 rounded-xl font-bold transition-colors shadow-sm ${
               selectedKoperasi
                 ? "bg-[#006C48] text-white hover:bg-[#153626]"
                 : "bg-gray-300 text-gray-500 hover:bg-gray-400"

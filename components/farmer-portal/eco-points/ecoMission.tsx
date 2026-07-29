@@ -13,7 +13,7 @@ const EcoMission = () => {
           </span>
         </div>
         <Link
-          href="/farmer-portal/eco-points/tradeMission"
+          href="/farmer-portal/tradeMission"
           className="text-[#609D7F] font-semibold"
         >
           Lihat semua
