@@ -295,3 +295,21 @@ export async function addShipment(
 
   return { success: true, shipmentId: newShipment.id };
 }
+
+// ambil leaderboard
+export async function getLeaderboard() {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("leaderboard")
+    .select("*")
+    .order("ecoPoint", {
+      ascending: false,
+    });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return data;
+}

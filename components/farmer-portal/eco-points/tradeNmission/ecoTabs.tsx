@@ -6,6 +6,7 @@ import { LayoutGrid, Gift, History } from "lucide-react";
 import DailyMission from "./mission/dailyMission";
 import MonthlyMission from "./mission/monthlyMission";
 import Reward from "./reward/reward";
+import LeaderboardPage from "./leaderboard/leaderboardPage";
 const EcoTabs = () => {
   return (
     <Tabs defaultValue="mission" className="p-5">
@@ -25,11 +26,11 @@ const EcoTabs = () => {
           <span>Reward</span>
         </TabsTrigger>
         <TabsTrigger
-          value="history"
+          value="leaderboard"
           className="flex items-center gap-2 w-full h-full rounded-2xl font-semibold text-base data-[state=active]:bg-[#269957] data-[state=active]:text-white data-[state=active]:shadow-md"
         >
           <History className="w-5 h-5" />
-          <span>History</span>
+          <span>Leaderboard</span>
         </TabsTrigger>
       </TabsList>
       <TabsContent value="mission">
@@ -40,6 +41,9 @@ const EcoTabs = () => {
       </TabsContent>
       <TabsContent value="reward">
         <Reward />
+      </TabsContent>
+      <TabsContent value="leaderboard">
+        <LeaderboardPage />
       </TabsContent>
     </Tabs>
   );
