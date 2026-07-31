@@ -79,7 +79,7 @@ const RadialChart = () => {
           Pantau kondisi lahanmu agar hasil panen optimal
         </CardDescription>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 grid-cols-2 gap-2">
+      <CardContent className="grid grid-cols-1 grid-cols-2 gap-10">
         <ChartContainer
           config={chartConfig}
           className="aspect-square mx-auto h-[260px] w-[150px]"
@@ -132,19 +132,11 @@ const RadialChart = () => {
             </PolarRadiusAxis>
           </RadialBarChart>
         </ChartContainer>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
           {soilCond.map((data, index) => (
-            <div key={index} className="flex flex-col gap-1">
+            <div key={index} className="flex flex-col gap-2">
               <span className="font-semibold">{data.title}</span>
-              <div className="flex items-center gap-1">
-                <span className="text-xs">{data.value}</span>
-                <div
-                  className="h-[8px] rounded-full bg-[#269957]"
-                  style={{
-                    width: `${(data.numerator / data.denominator) * 100}%`,
-                  }}
-                />
-              </div>
+              <span className="text-md text-gray-900">{data.value}</span>
             </div>
           ))}
         </div>

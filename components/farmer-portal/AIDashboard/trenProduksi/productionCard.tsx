@@ -32,11 +32,14 @@ const ProductionCard = () => {
             Prediksi hasil panen berdasarkan data historismu
           </CardDescription>
         </div>
-        <Link href="#" className="bg-[#269957] text-white p-2 rounded-lg">
+        <Link
+          href="/farmer-portal/AI-insight/forecastReport"
+          className="bg-[#269957] text-white p-2 rounded-lg"
+        >
           Lihat Rincian
         </Link>
       </CardHeader>
-      <CardContent className="grid grid-cols-1 grid-cols-12 gap-3">
+      <CardContent className="grid grid-cols-1 lg:grid-cols-12 gap-3">
         <div className="lg:col-span-4">
           <ForecastFilter
             products={productType}

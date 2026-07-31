@@ -38,6 +38,7 @@ import { VscSparkle } from "react-icons/vsc";
 import Image from "next/image";
 import { ChartNoAxesCombined } from "lucide-react";
 import { formatRupiah } from "@/lib/utils";
+import DetailAllo from "./detailAllo";
 const ProductAllo = () => {
   return (
     <Card className="bg-white px-1 py-5 rounded-2xl flex flex-col gap-4">
@@ -59,9 +60,12 @@ const ProductAllo = () => {
         </Link>
       </CardHeader>
       <CardContent className="flex flex-col gap-2">
-        <div className="flex flex-col lg:flex-row items-center gap-2">
+        <div className="grid grid-cols-2 lg:grid-cols-4 items-center gap-2">
           {productRecommend.map((data, index) => (
-            <div className="flex flex-col gap-3 text-center py-2" key={index}>
+            <div
+              className="flex flex-col gap-3 items-center text-center py-2"
+              key={index}
+            >
               <Image src={data.icon} width={70} height={70} alt={data.title} />
               <span className="font-semibold whitespace-nowrap">
                 {data.title}
@@ -88,9 +92,7 @@ const ProductAllo = () => {
         </div>
       </CardContent>
       <CardFooter>
-        <button className="w-full text-white bg-[#269957] p-2 rounded-lg text-md font-semibold">
-          Lihat alokasi
-        </button>
+        <DetailAllo />
       </CardFooter>
     </Card>
   );
