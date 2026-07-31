@@ -18,7 +18,7 @@ const RewardClient = () => {
     return rewardData.filter((reward) => reward.category === category);
   }, [category]);
   return (
-    <div className="rounded-2xl bg-white p-6 shadow-sm space-y-6">
+    <div className="rounded-2xl bg-white px-3 py-4 shadow-sm space-y-6">
       <div className="flex justify-between items-center">
         <div className="flex flex-col gap-2">
           <h2 className="font-semibold text-xl flex items-center gap-2 text-[#269975]">

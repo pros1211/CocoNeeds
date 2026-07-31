@@ -29,27 +29,29 @@ interface Props {
 
 const RewardFilter = ({ value, onChange }: Props) => {
   return (
-    <div className="flex flex-wrap gap-3">
-      {categories.map((item) => {
-        const Icon = item.icon;
+    <div className="overflow-x-auto scrollbar-hide">
+      <div className="flex flex-wrap gap-3 min-w-max">
+        {categories.map((item) => {
+          const Icon = item.icon;
 
-        return (
-          <Button
-            key={item.value}
-            variant="outline"
-            onClick={() => onChange(item.value as RewardCategory)}
-            className={
-              value === item.value
-                ? "bg-[#269957] text-white border-[#269957]"
-                : ""
-            }
-          >
-            <Icon className="w-4 h-4 mr-2" />
+          return (
+            <Button
+              key={item.value}
+              variant="outline"
+              onClick={() => onChange(item.value as RewardCategory)}
+              className={
+                value === item.value
+                  ? "bg-[#269957] text-white border-[#269957]"
+                  : ""
+              }
+            >
+              <Icon className="w-4 h-4 mr-2" />
 
-            {item.label}
-          </Button>
-        );
-      })}
+              {item.label}
+            </Button>
+          );
+        })}
+      </div>
     </div>
   );
 };

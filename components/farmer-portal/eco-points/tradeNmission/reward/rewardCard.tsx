@@ -18,7 +18,7 @@ interface props {
 const RewardCard = ({ reward, onRedeem }: props) => {
   return (
     <Card className="rounded-3xl border-green-100 shadow-sm hover:shadow-md transition-all">
-      <div className="flex items-center gap-5 p-5">
+      <div className="flex items-center flex-col lg:flex-row gap-5 p-5">
         <div className="shrink-0">
           <Image
             src={reward.image}
