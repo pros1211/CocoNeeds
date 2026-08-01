@@ -33,13 +33,17 @@ export const breadcrumbConfig: Record<string, BreadcrumbItem[]> = {
     },
   ],
 
-  "/farmer-portal/lahan": [
+  "/farmer-portal/lahan/riwayatPerawatan": [
     {
       label: "Farmer Portal",
       href: "/farmer-portal",
     },
     {
-      label: "Lahan",
+      label: "Manajemen lahan",
+      href: "/farmer-portal/lahan",
+    },
+    {
+      label: "Riwayat perawatan",
     },
   ],
 };

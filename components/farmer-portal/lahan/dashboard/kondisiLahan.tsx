@@ -37,15 +37,17 @@ const KondisiLahan = () => {
   return (
     <Card className="w-full rounded-2xl border shadow-sm bg-white">
       <CardHeader className=" flex flex-row items-center justify-between pb-4">
-        <CardTitle className="text-sm lg:text-lg">Kondisi Lahan</CardTitle>
+        <CardTitle className="text-sm font-semibold lg:text-lg">
+          Kondisi Lahan
+        </CardTitle>
         <Link
           href="/farmer-portal/"
-          className="font-semibold text-sm lg:text-lg text-[#609D7F]"
+          className="font-semibold text-sm lg:text-md text-[#609D7F]"
         >
           Lihat Semua
         </Link>
       </CardHeader>
-      <CardContent className="flex flex-col md:flex-row items-center gap-6 p-4 md:p-6 bg-[#F8F9FA] rounded-xl">
+      <CardContent className="flex flex-col md:flex-row items-center gap-6 p-4 md:p-4 bg-[#F8F9FA] rounded-xl">
         <div className="w-full md:flex-1 flex justify-center ">
           <ChartContainer
             config={chartConfig}

@@ -2,6 +2,7 @@ import React from "react";
 import FarmerNav from "@/components/navigation/farmerNav";
 import Time from "@/components/time";
 import { Search, BadgeQuestionMark, Clock, Badge, Bell } from "lucide-react";
+import { Toaster } from "sonner";
 export default function FarmerPortalLayout({
   children,
 }: {
@@ -31,6 +32,7 @@ export default function FarmerPortalLayout({
           </div>
         </header>
         <main className="flex-1 overflow-y-auto pb-28 md:pb-0">{children}</main>
+        <Toaster richColors />
       </div>
     </div>
   );

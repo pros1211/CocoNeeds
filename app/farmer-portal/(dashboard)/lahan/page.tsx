@@ -1,5 +1,5 @@
 import React from "react";
-import LahanClient from "@/components/farmer-portal/lahan/clientLahan";
+import LahanClient from "@/components/farmer-portal/lahan/dashboard/clientLahan";
 import Task from "@/components/farmer-portal/homeDash/task";
 const Lahan = () => {
   return <LahanClient taskComponent={<Task />} />;

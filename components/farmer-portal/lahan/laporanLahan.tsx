@@ -89,7 +89,7 @@ const LaporanLahan = ({ lahanList }: ReportMenuProps) => {
           ? Number(formData.get("pohon_mati"))
           : undefined,
         jenis_pupuk: formData.get("jenis_pupuk") as string,
-        jumlah_pupuk: Number(formData.get("jumlah_pupuk_kg")),
+        jumlah_pupuk: Number(formData.get("jumlah_pupuk")),
       });
     } else if (activeForm === "production") {
       if (!tanggal) return alert("Pilih tanggal produksi!");
