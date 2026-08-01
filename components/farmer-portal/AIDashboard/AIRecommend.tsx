@@ -24,13 +24,13 @@ const AIRecommendation = [
     title: "Kelola Irigasi",
     description:
       "Berdasarkan kondisi tanah, kurangi frekuensi penyiraman minggu depan cukup 3 kali.",
-    icon: "/water-drop.png",
+    icon: "/irigasi.png",
   },
   {
     title: "Potensi Hama",
     description:
       "Berdasarkan observasi hama, atasi hama kumbang badak untuk meningkatkan kualitas panen",
-    icon: "/pemula.png",
+    icon: "/hama.png",
   },
 ];
 const AIRecommend = () => {
