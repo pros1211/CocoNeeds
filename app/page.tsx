@@ -14,7 +14,6 @@ export default function Home() {
         <Core />
         <Features />
         <Faq />
-        <Footer />
       </main>
     </>
   );

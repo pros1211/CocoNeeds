@@ -148,3 +148,22 @@
     @apply font-sans;
   }
 }
+
+/* ── Integrated section: flowing dashed connector animations ── */
+@keyframes flowDash {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 32px 0;
+  }
+}
+
+@keyframes flowDashVertical {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 32px;
+  }
+}

@@ -9,7 +9,7 @@ const Hero = () => {
         style={{ backgroundImage: "url('/coconutPlant.png')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-green via-green/80 to-transparent z-0"></div>
-        <div className="relative z-10 p-6 xl:px-8 xl:pb-16 xl:pt-32 pt-24 lg:pt-28 flex flex-col gap-8 max-w-[800px]">
+        <div className="relative z-10 p-6 pt-10 xl:px-8 xl:pb-16 xl:pt-20 lg:pt-28 flex flex-col gap-8 max-w-[800px]">
           <span className="p-3 text-xs xl:text-lg rounded-full max-w-fit text-[#70E000] bg-[#70E000]/30">
             Bersama Membangun Agroindustri Kelapa
           </span>
