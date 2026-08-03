@@ -30,7 +30,7 @@ const Hero = () => {
       z-0
     "
         style={{
-          backgroundImage: "url('/heroMarketDesktop.png')",
+          backgroundImage: "url('/heroMarketdesktop.png')",
         }}
       />
       <div className="mx-auto px-10 py-8 lg:py-2 relative min-h-[650px]">
