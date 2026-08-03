@@ -30,7 +30,7 @@ const cardData = [
 ];
 const Advantage = () => {
   return (
-    <div className="flex flex-col gap-6 items-center mt-6 py-8 bg-[#FFFF]">
+    <div className="flex flex-col gap-6 text-center items-center mt-6 py-8 bg-[#FFFF]">
       <h2 className="text-3xl text-[#3BA275] font-semibold">
         Logistik yang lebih efisien dari pickup hingga pengiriman
       </h2>
@@ -38,7 +38,7 @@ const Advantage = () => {
         Semua proses logistik bekerja bersama untuk memastikan pengiriman hasil
         panen lebih efisien, mudah dipantau, dan transparan.
       </p>
-      <div className="grid grid-cols-1 grid-cols-5 gap-6 px-8">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 px-8">
         {cardData.map((data) => {
           return (
             <Card
